@@ -3,26 +3,27 @@ package imporHtml;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class HtmlFunc {
-
+	private String arquivo,condicao1;
+	private int clear;
+	
 	public HtmlFunc() {
-		// TODO Auto-generated constructor stub
+		arquivo = null;
+		condicao1 = "td rowspan=\"1\"";
+		clear = 0;
 	}
 	
 	public void HtmlRead(){
 		try{
-			String linha,palavra,condicao1;
+			String linha,palavra;
 			int inicio,fim,cont=0;
 			
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			formato.setLenient(false);
 			 
-			condicao1 = "td rowspan=\"1\"";
-
 			BufferedReader file = new BufferedReader(new FileReader("//Users//alexandre//Documents//workspace//Best Jogo//arquivos//D_MEGA.html"));
 			
 			while(file.ready()){  
@@ -43,8 +44,11 @@ public class HtmlFunc {
 								  
 								   java.util.Date dataJogo = null;
 								   dataJogo = (java.util.Date)formato.parse(palavra);
-								
-								   System.out.println(palavra);
+								   if(clear == 0){
+									   arquivo = palavra+" - ";
+									   clear++;
+								   }else
+									   arquivo = arquivo+palavra+" - ";
 								   
 								   cont++;
 								  
@@ -52,16 +56,19 @@ public class HtmlFunc {
 							
 							   }
 						   }else{
-							   System.out.println(palavra);
-							   if(cont == 6)
+							   if(cont == 6){
+								   arquivo = arquivo+palavra+"\n";
 								   cont = 0;
-							   else
+							   }else{
+								   arquivo = arquivo+palavra+" ";
 								   cont++;
+							   }
 						   }
 					   }
 				   }
 				}  
-				file.close(); 
+				file.close();
+				System.out.println(arquivo);
 		} catch (IOException ioe){
 			ioe.printStackTrace();
 		}
