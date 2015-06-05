@@ -80,13 +80,13 @@ public class Txt {
 							numj = linha.substring(inicio + 1, fim);
 							data = linha.substring(0,inicio);
 							
-							temporario = numj.split (Pattern.quote (";"));
+							temporario = numj.split (Pattern.quote (";"));//pega todos os numros 
 							
-							for(int lin = 0;lin < 5;lin++){
+							for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
 								numeros[lin] = Integer.parseInt(temporario[lin]);
 							}
 							
-							for(int cont1 = 0;cont1<5;cont1++){
+							for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
 								for(int cont2 = cont1+1;cont2<5;cont2++){
 									if(numeros[cont1] > numeros[cont2]){
 										temp = numeros[cont1];
