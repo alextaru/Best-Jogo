@@ -88,11 +88,5 @@ public class HtmlFunc {
 		}
 
 	}
-	
-	//retorna a quantidade de linhas do arquivo
-	public int TamLinhas(){
-		tamanho++;
-		return tamanho;
-	}
 
 }
