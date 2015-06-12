@@ -44,11 +44,13 @@ public class Txt {
 	
 	//acha resultados igual
 	public void Igualdade(){
-		String temporario[] = new String[5];
 		int numeros[] = new int[5];
 		int numeros2[] = new int[5];
-		String linha,numj,data1 = null,data2,arquivoIgual = null;
-		int nlinha = 0,temp;//linha que esta comparando
+		String temporario[] = new String[5];
+		String arquivoIgual = null,numj,data1,data2;
+		ArrayList<String> linhas = new ArrayList<String>();
+		int temp;
+		
 		
 		BufferedReader file = null;
 		int inicio,fim;
@@ -61,100 +63,88 @@ public class Txt {
 		}
 	
 		try {
-			for (int cont = 0;cont<tamanho;cont++){//comparar linha por linha
-				while (file.ready()){
-					if(cont == 0){//pega o numeros de linhas do arquivo
-						linha = file.readLine();
-						tamanho = Integer.parseInt(linha);
-						cont++;
-						nlinha++;
-					}else{
-						
-						if(cont == nlinha){//quarda a linha para comparar com as outras
-							
-							linha = file.readLine();
+			while (file.ready()){//adiciona as linhas do arquivo em uma array
+				linhas.add(file.readLine());
+			}
+		}catch (IOException e) {
+			System.err.println("Erro ao gravar arquivo resutados.txt no array");
+			e.printStackTrace();
+		}	
+			
+			
+		for (int cont = 0;cont<tamanho;cont++){//comparar se tem resultados igual
+				
+			inicio = linhas.get(cont).indexOf("<");
+			fim = linhas.get(cont).indexOf(">");
 					
-							inicio = linha.indexOf("<");
-							fim = linha.indexOf(">");
+			numj = linhas.get(cont).substring(inicio + 1, fim);
+			data1 = linhas.get(cont).substring(0,inicio);
 						
-							numj = linha.substring(inicio + 1, fim);
-							data1 = linha.substring(0,inicio);
-							
-							temporario = numj.split (Pattern.quote (";"));//pega todos os numros 
-							
-							for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
-								numeros[lin] = Integer.parseInt(temporario[lin]);
-							}
-							
-							for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
-								for(int cont2 = cont1+1;cont2<5;cont2++){
-									if(numeros[cont1] > numeros[cont2]){
-										temp = numeros[cont1];
-										numeros[cont1] = numeros[cont2];
-										numeros[cont2] = temp;
-									}
-								}
-							}
-							nlinha++;
-								
-						}else if(cont < nlinha){//pega proxima linha para comparar
-							linha = file.readLine();
-							
-							inicio = linha.indexOf("<");
-							fim = linha.indexOf(">");
+			temporario = numj.split (Pattern.quote (";"));//pega todos os numros 
 						
-							numj = linha.substring(inicio + 1, fim);
-							data2 = linha.substring(0,inicio);
-							
-							temporario = numj.split (Pattern.quote (";"));
-							
-							for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
-								numeros2[lin] = Integer.parseInt(temporario[lin]);
-							}
-							
-							for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
-								for(int cont2 = cont1+1;cont2<5;cont2++){
-									if(numeros2[cont1] > numeros2[cont2]){
-										temp = numeros2[cont1];
-										numeros2[cont1] = numeros2[cont2];
-										numeros2[cont2] = temp;
-									}
-								}
-							}
-							
-							//compara se o numero resutado Ž igual
-							if(numeros[0] == numeros2[0]){
-								if(numeros[1] == numeros2[1]){
-									if(numeros[2] == numeros2[2]){
-										if(numeros[3] == numeros2[3]){
-											if(numeros[4] == numeros2[4]){
-												arquivoIgual = arquivoIgual + data1 + "-";
-												for(cont = 0;cont < 5;cont++){
-													arquivoIgual = arquivoIgual + Integer.toString(numeros[cont]) + " ";
-												}
-												arquivoIgual = arquivoIgual + "\n" + data2 + "-";
-												for(cont = 0;cont < 5;cont++){
-													arquivoIgual = arquivoIgual + Integer.toString(numeros2[cont]) + " ";
-												}
-											}
-										}
-									}
-								}
-							}
-							nlinha++;
-						}else{//nao faz nada apenas passa para proxima linha
-							if(cont>nlinha)
-								nlinha = 0;
-							else
-								nlinha++;
-						}
+			for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
+				numeros[lin] = Integer.parseInt(temporario[lin]);
+			}
+						
+			for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
+				for(int cont3 = cont1+1;cont3<5;cont3++){
+					if(numeros[cont1] > numeros[cont3]){
+						temp = numeros[cont1];
+						numeros[cont1] = numeros[cont3];
+						numeros[cont3] = temp;
 					}
 				}
 			}
 			
-		} catch (IOException e) {
-			System.err.println("Erro ao gravar arquivo resutados.txt");
-			e.printStackTrace();
-		}	
+			for (int cont2 = cont+1;cont2 < tamanho;cont2++){
+			
+				inicio = linhas.get(cont2).indexOf("<");
+				fim = linhas.get(cont2).indexOf(">");
+						
+				numj = linhas.get(cont2).substring(inicio + 1, fim);
+				data2 = linhas.get(cont2).substring(0,inicio);
+							
+				temporario = numj.split (Pattern.quote (";"));//pega todos os numros 
+							
+				for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
+					numeros2[lin] = Integer.parseInt(temporario[lin]);
+				}
+							
+				for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
+					for(int cont3 = cont1+1;cont3<5;cont3++){
+						if(numeros2[cont1] > numeros2[cont3]){
+							temp = numeros2[cont1];
+							numeros2[cont1] = numeros2[cont3];
+							numeros2[cont3] = temp;
+						}
+					}
+				}
+				
+							
+				//compara se o numero resutado Ž igual
+				if(numeros[0] == numeros2[0]){
+					if(numeros[1] == numeros2[1]){
+						if(numeros[2] == numeros2[2]){
+							if(numeros[3] == numeros2[3]){
+								if(numeros[4] == numeros2[4]){
+									arquivoIgual = arquivoIgual + data1 + "-";
+									for(cont = 0;cont < 5;cont++){
+										arquivoIgual = arquivoIgual + Integer.toString(numeros[cont]) + " ";
+									}
+									arquivoIgual = arquivoIgual + "\n" + data2 + "-";
+									for(cont = 0;cont < 5;cont++){
+										arquivoIgual = arquivoIgual + Integer.toString(numeros2[cont]) + " ";
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
+			
+ 
+	
+
