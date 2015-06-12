@@ -28,11 +28,10 @@ public class Txt {
 		HtmlFunc html = new HtmlFunc();
 		
 		resultados = html.HtmlRead();
-		tamanho = html.TamLinhas();
 		try {
 			FileWriter txt = new FileWriter("arquivos/resutados.txt");//cria o arquivo txt
 			PrintWriter gravarTxt = new PrintWriter(txt);
-			gravarTxt.printf(tamanho+"\n"+resultados);//grava os resultados no arquivo
+			gravarTxt.printf(resultados);//grava os resultados no arquivo
 			txt.close();
 			    
 		} catch (IOException e) {
@@ -69,7 +68,9 @@ public class Txt {
 		}catch (IOException e) {
 			System.err.println("Erro ao gravar arquivo resutados.txt no array");
 			e.printStackTrace();
-		}	
+		}
+		
+		tamanho = linhas.size();
 			
 			
 		for (int cont = 0;cont<tamanho;cont++){//comparar se tem resultados igual
