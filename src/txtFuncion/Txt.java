@@ -43,8 +43,8 @@ public class Txt {
 	
 	//acha resultados igual
 	public void Igualdade(){
-		int numeros[] = new int[5];
-		int numeros2[] = new int[5];
+		int numeros[] = new int[6];
+		int numeros2[] = new int[6];
 		String temporario[] = new String[5];
 		String arquivoIgual = null,numj,data1,data2;
 		ArrayList<String> linhas = new ArrayList<String>();
@@ -74,7 +74,7 @@ public class Txt {
 			
 			
 		for (int cont = 0;cont<tamanho;cont++){//comparar se tem resultados igual
-				
+			
 			inicio = linhas.get(cont).indexOf("<");
 			fim = linhas.get(cont).indexOf(">");
 					
@@ -83,12 +83,12 @@ public class Txt {
 						
 			temporario = numj.split (Pattern.quote (";"));//pega todos os numros 
 						
-			for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
+			for(int lin = 0;lin < 6;lin++){//para passar os numeros para inteiro
 				numeros[lin] = Integer.parseInt(temporario[lin]);
 			}
 						
-			for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
-				for(int cont3 = cont1+1;cont3<5;cont3++){
+			for(int cont1 = 0;cont1<6;cont1++){//colocar numeros em ordem crescente 
+				for(int cont3 = cont1+1;cont3<6;cont3++){
 					if(numeros[cont1] > numeros[cont3]){
 						temp = numeros[cont1];
 						numeros[cont1] = numeros[cont3];
@@ -96,7 +96,7 @@ public class Txt {
 					}
 				}
 			}
-			
+
 			for (int cont2 = cont+1;cont2 < tamanho;cont2++){
 			
 				inicio = linhas.get(cont2).indexOf("<");
@@ -107,12 +107,12 @@ public class Txt {
 							
 				temporario = numj.split (Pattern.quote (";"));//pega todos os numros 
 							
-				for(int lin = 0;lin < 5;lin++){//para passar os numeros para inteiro
+				for(int lin = 0;lin < 6;lin++){//para passar os numeros para inteiro
 					numeros2[lin] = Integer.parseInt(temporario[lin]);
 				}
 							
-				for(int cont1 = 0;cont1<5;cont1++){//colocar numeros em ordem crescente 
-					for(int cont3 = cont1+1;cont3<5;cont3++){
+				for(int cont1 = 0;cont1<6;cont1++){//colocar numeros em ordem crescente 
+					for(int cont3 = cont1+1;cont3<6;cont3++){
 						if(numeros2[cont1] > numeros2[cont3]){
 							temp = numeros2[cont1];
 							numeros2[cont1] = numeros2[cont3];
@@ -128,13 +128,16 @@ public class Txt {
 						if(numeros[2] == numeros2[2]){
 							if(numeros[3] == numeros2[3]){
 								if(numeros[4] == numeros2[4]){
-									arquivoIgual = arquivoIgual + data1 + "-";
-									for(cont = 0;cont < 5;cont++){
-										arquivoIgual = arquivoIgual + Integer.toString(numeros[cont]) + " ";
-									}
-									arquivoIgual = arquivoIgual + "\n" + data2 + "-";
-									for(cont = 0;cont < 5;cont++){
-										arquivoIgual = arquivoIgual + Integer.toString(numeros2[cont]) + " ";
+									if(numeros[5] == numeros2[5]){
+										arquivoIgual = arquivoIgual + data1 + "-";
+										for(int cont4 = 0;cont4 < 6;cont4++){
+											arquivoIgual = arquivoIgual + Integer.toString(numeros[cont4]) + " ";
+										}
+										arquivoIgual = arquivoIgual + "\n" + data2 + "-";
+										for(int cont5 = 0;cont5 < 6;cont5++){
+											arquivoIgual = arquivoIgual + Integer.toString(numeros2[cont5]) + " ";
+										}
+										arquivoIgual = arquivoIgual + "\n";
 									}
 								}
 							}
@@ -143,6 +146,7 @@ public class Txt {
 				}
 			}
 		}
+		System.out.println(arquivoIgual);
 	}
 }
 			
