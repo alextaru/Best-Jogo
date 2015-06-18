@@ -1,7 +1,5 @@
 package txtFuncion;
 
-import imporHtml.HtmlFunc;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,25 +11,18 @@ import java.util.regex.Pattern;
 
 
 public class Txt {
-	private String resultados;
-	private int tamanho;
 	
 	
 
 	public Txt() {
-		resultados = null;
-		tamanho = 1;//numeros de linhas do arquivo
 	}
 	
 	//gerar um txt com os jogos do arquivo html	
-	public void TxtGerador(){
-		HtmlFunc html = new HtmlFunc();
-		
-		resultados = html.HtmlRead();
+	public void TxtGerador(String local, String conteudo){
 		try {
-			FileWriter txt = new FileWriter("arquivos/resutados.txt");//cria o arquivo txt
+			FileWriter txt = new FileWriter(local);//cria o arquivo txt
 			PrintWriter gravarTxt = new PrintWriter(txt);
-			gravarTxt.printf(resultados);//grava os resultados no arquivo
+			gravarTxt.printf(conteudo);//grava os resultados no arquivo
 			txt.close();
 			    
 		} catch (IOException e) {
@@ -43,6 +34,7 @@ public class Txt {
 	
 	//acha resultados igual
 	public void Igualdade(){
+		int tamanho;
 		int numeros[] = new int[6];
 		int numeros2[] = new int[6];
 		String temporario[] = new String[5];
@@ -129,7 +121,11 @@ public class Txt {
 							if(numeros[3] == numeros2[3]){
 								if(numeros[4] == numeros2[4]){
 									if(numeros[5] == numeros2[5]){
-										arquivoIgual = arquivoIgual + data1 + "-";
+										if(arquivoIgual == null){
+											arquivoIgual = data1 + "-";
+										}else
+											arquivoIgual = arquivoIgual + data1 + "-";
+										
 										for(int cont4 = 0;cont4 < 6;cont4++){
 											arquivoIgual = arquivoIgual + Integer.toString(numeros[cont4]) + " ";
 										}
@@ -146,7 +142,11 @@ public class Txt {
 				}
 			}
 		}
-		System.out.println(arquivoIgual);
+		if(arquivoIgual == null){
+			arquivoIgual = "N‹o a resultado identico!";
+		}
+		
+		TxtGerador("arquivos/resulIgual.txt",arquivoIgual);
 	}
 }
 			
