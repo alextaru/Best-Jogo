@@ -6,22 +6,22 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import txtFuncion.Txt;
+
 public class HtmlFunc {
-	private String arquivo, condicao1,erro;// string arquivo Ž onde Ž gravado o arquivo organizado
-	private int clear,tamanho;
+	private String arquivo, condicao1;// string arquivo Ž onde Ž gravado o arquivo organizado
+	private int clear;
 
 	public HtmlFunc() {
 		arquivo = null;
 		condicao1 = "td rowspan=\"1\"";
 		clear = 0;
-		erro = null;
-		tamanho = 0;
 	}
 	
 
 	// funcao para ler o arquivo html e organizar apenas as datas e resutador em
 	// uma unica string
-	public String HtmlRead() {
+	public void HtmlRead() {
 		try {
 			String linha, palavra;
 			int inicio, fim, cont = 0;
@@ -55,7 +55,6 @@ public class HtmlFunc {
 								// testa se a palavra achada entre os caracteres Ž uma data
 								java.util.Date dataJogo = null;
 								dataJogo = (java.util.Date) formato.parse(palavra);
-								tamanho++;
 								if (clear == 0) {
 									arquivo = palavra + "<";
 									clear++;
@@ -65,7 +64,6 @@ public class HtmlFunc {
 								cont++;
 
 							} catch (ParseException e) {
-								erro = "data nao encontrada!";
 							}
 						} else {
 							if (cont == 6) {
@@ -80,12 +78,13 @@ public class HtmlFunc {
 				}
 			}
 			file.close();
-			return arquivo;
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
-			erro = "erro ao ler o arquivo!";
-			return "erro";
 		}
+		
+		Txt gerartxt = new Txt();
+		
+		gerartxt.TxtGerador("arquivos/resutados.txt", arquivo);
 
 	}
 
