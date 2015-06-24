@@ -1,5 +1,7 @@
 package Grafico;
 
+import imporHtml.HtmlFunc;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,6 +24,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
+import txtFuncion.Txt;
+
 public class Principal {
 
 	private JFrame frame;
@@ -30,9 +34,16 @@ public class Principal {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Txt txt = new Txt();
+		//HtmlFunc html = new HtmlFunc();
 		
+		//html.HtmlRead();
 		
-		EventQueue.invokeLater(new Runnable() {
+		//txt.Igualdade();
+		
+		txt.MesSeparetor();
+		
+		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Principal window = new Principal();
@@ -41,7 +52,7 @@ public class Principal {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 		
 		
 	}
