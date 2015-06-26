@@ -22,15 +22,23 @@ public class Txt {
 
 	public Txt() {
 		linhas.clear();
+		inicio = 0;
+		fim = 0;
+		file = null;
+		data = null;
+		tamanho = 0;
+	}
+	
+	//adiciona as linhas do arquivo txt ao arrayList
+	public void GravarTxt(String arquivo){
 		
-		//adiciona as linhas ao arrayList
 		try {
-			file = new BufferedReader(new FileReader("arquivos/resutados.txt"));
+			file = new BufferedReader(new FileReader(arquivo));
 		} catch (FileNotFoundException e) {
 			System.err.println("Erro ao ler arquivo resutados.txt");
 			e.printStackTrace();
 		}
-	
+			
 		try {
 			while (file.ready()){//adiciona as linhas do arquivo em uma array
 				linhas.add(file.readLine());
@@ -40,10 +48,6 @@ public class Txt {
 			e.printStackTrace();
 		}
 		
-		inicio = 0;
-		fim = 0;
-		file = null;
-		data = null;
 		tamanho = linhas.size();
 	}
 	
@@ -65,6 +69,8 @@ public class Txt {
 		String mes1 = null,mes2 = null,mes3 = null,mes4 = null,mes5 = null,mes6 = null,mes7 = null,mes8 = null,mes9 = null,mes10 = null,mes11 = null,mes12 = null;
 		String temp;
 		int primeira,ultima,mes;
+		
+		GravarTxt("arquivos/resutados.txt");
 		
 		for (int cont = 0;cont<tamanho;cont++){
 			inicio = linhas.get(cont).indexOf("<");
@@ -179,7 +185,8 @@ public class Txt {
 		String temporario[] = new String[5];
 		String arquivoIgual = null,numj,data2;
 		int temp;
-			
+		
+		GravarTxt("arquivos/resutados.txt");	
 			
 		for (int cont = 0;cont<tamanho;cont++){//comparar se tem resultados igual
 			
@@ -267,6 +274,7 @@ public class Txt {
 	
 	public void CalculoPorcentagem(String local){
 		
+		GravarTxt(local);
 	}
 }
 			
