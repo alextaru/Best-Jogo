@@ -155,7 +155,20 @@ public class Txt {
 			}
 			
 		}
-		System.out.println(mes1);
+		
+		//criando os arquivos com o conteudo do mes
+		TxtGerador("arquivos/mes1.txt",mes1);
+		TxtGerador("arquivos/mes2.txt",mes2);
+		TxtGerador("arquivos/mes3.txt",mes3);
+		TxtGerador("arquivos/mes4.txt",mes4);
+		TxtGerador("arquivos/mes5.txt",mes5);
+		TxtGerador("arquivos/mes6.txt",mes6);
+		TxtGerador("arquivos/mes7.txt",mes7);
+		TxtGerador("arquivos/mes8.txt",mes8);
+		TxtGerador("arquivos/mes9.txt",mes9);
+		TxtGerador("arquivos/mes10.txt",mes10);
+		TxtGerador("arquivos/mes11.txt",mes12);
+		TxtGerador("arquivos/mes12.txt",mes12);
 	}
 	
 	
@@ -250,6 +263,10 @@ public class Txt {
 		}
 		
 		TxtGerador("arquivos/resulIgual.txt",arquivoIgual);
+	}
+	
+	public void CalculoPorcentagem(String local){
+		
 	}
 }
 			
