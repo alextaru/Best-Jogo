@@ -39,9 +39,11 @@ public class Principal {
 		
 		//html.HtmlRead();
 		
-		//txt.Igualdade();
+		txt.Igualdade();
 		
-		txt.MesSeparetor();
+		//txt.MesSeparetor();
+		
+		//txt.CalculoPorcentagem();
 		
 		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
