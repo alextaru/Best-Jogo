@@ -24,6 +24,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
+import organizador.Organiza;
+
 import txtFuncion.Txt;
 
 public class Principal {
@@ -34,14 +36,14 @@ public class Principal {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		Txt txt = new Txt();
+		Organiza organizar = new Organiza();
 		//HtmlFunc html = new HtmlFunc();
 		
 		//html.HtmlRead();
 		
-		txt.Igualdade();
+		//txt.Igualdade();
 		
-		//txt.MesSeparetor();
+		organizar.MesSeparetor();
 		
 		//txt.CalculoPorcentagem();
 		
