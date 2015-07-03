@@ -36,14 +36,15 @@ public class Principal {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		Organiza organizar = new Organiza();
+		//Organiza organizar = new Organiza();
 		//HtmlFunc html = new HtmlFunc();
+		Txt txt = new Txt();
 		
 		//html.HtmlRead();
 		
-		//txt.Igualdade();
+		txt.Igualdade();
 		
-		organizar.MesSeparetor();
+		//organizar.MesSeparetor();
 		
 		//txt.CalculoPorcentagem();
 		
