@@ -1,6 +1,7 @@
 package organizador;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import txtFuncion.Txt;
 
@@ -13,7 +14,7 @@ public class Organiza {
 	//organiza o ArrayList em ordem creceste
 	public ArrayList<Integer> OrdenaArray(ArrayList<Integer> NumerosArray){
 			
-		int temp,tamanho;
+		int tamanho;
 			
 		tamanho = NumerosArray.size();
 			
@@ -144,5 +145,27 @@ public class Organiza {
 		txt.TxtGerador("arquivos/mes10.txt",mes10);
 		txt.TxtGerador("arquivos/mes11.txt",mes12);
 		txt.TxtGerador("arquivos/mes12.txt",mes12);
+	}
+	
+	public ArrayList<String> SepararNumero(String linha){
+		int inicio,fim,tamanho;
+		String numerosJuntos;
+		String[] numerosSeparados;
+		ArrayList<String> numeros = new ArrayList<String>();
+		
+		inicio = linha.indexOf("<");
+		fim = linha.indexOf(">");
+				
+		numerosJuntos = linha.substring(inicio + 1, fim);
+					
+		numerosSeparados = numerosJuntos.split (Pattern.quote (";"));//pega todos os numros 
+					
+		tamanho = numerosSeparados.length;
+		
+		for(int lin = 0;lin < tamanho;lin++){//para passar os numeros para inteiro
+			numeros.add(numerosSeparados[lin]);
+		}
+		
+		return numeros;
 	}
 }
