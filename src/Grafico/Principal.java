@@ -24,8 +24,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
+import calculos.CalculoPorcentagem;
 import organizador.Organiza;
-
 import txtFuncion.Txt;
 
 public class Principal {
@@ -38,15 +38,18 @@ public class Principal {
 	public static void main(String[] args) {
 		//Organiza organizar = new Organiza();
 		//HtmlFunc html = new HtmlFunc();
-		Txt txt = new Txt();
+		//Txt txt = new Txt();
+		CalculoPorcentagem cauculo = new CalculoPorcentagem();
+		
+		cauculo.CalculoPorcentagemNumero("arquivos/mes4.txt");
 		
 		//html.HtmlRead();
 		
-		txt.Igualdade();
+		//txt.Igualdade();
+		
 		
 		//organizar.MesSeparetor();
 		
-		//txt.CalculoPorcentagem();
 		
 		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
