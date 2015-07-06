@@ -58,75 +58,75 @@ public class Organiza {
 			switch(mes){//adicionar cada resultado em seu mes
 				case 1:
 					if(mes1 == null) 
-						mes1 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes1 ="<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else	
-						mes1 = mes1 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes1 = mes1 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 2:
 					if(mes2 == null)
-						mes2 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes2 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes2 = mes2 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes2 = mes2 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 3:
 					if(mes3 == null)
-						mes3 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes3 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) +  ">" + "\n";
 					else
-						mes3 = mes3 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes3 = mes3 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 4:
 					if(mes4 == null)
-						mes4 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes4 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes4 = mes4 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes4 = mes4 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 5:
 					if(mes5 == null)
-						mes5 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes5 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes5 = mes5 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes5 = mes5 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 6:
 					if(mes6 == null)
-						mes6 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes6 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes6 = mes6 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes6 = mes6 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 7:
 					if(mes7 == null)
-						mes7 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes7 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes7 = mes7 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes7 = mes7 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 8:
 					if(mes8 == null)
-						mes8 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes8 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes8 = mes8 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes8 = mes8 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 9:
 					if(mes9 == null)
-						mes9 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes9 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes9 = mes9 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes9 = mes9 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 10:
 					if(mes10 == null)
-						mes10 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes10 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes10 = mes10 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes10 = mes10 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 11:
 					if(mes11 == null)
-						mes11 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes11 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes11 = mes11 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes11 = mes11 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 				case 12:
 					if(mes12 == null)
-						mes12 = linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes12 = "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					else
-						mes12 = mes12 + linhasTemporario.get(cont).substring(inicio+1,fim) + "\n";
+						mes12 = mes12 + "<" + linhasTemporario.get(cont).substring(inicio+1,fim) + ">" + "\n";
 					break;
 			}
 				
