@@ -32,6 +32,8 @@ public class CalculoPorcentagem {
 			numerosConvertidos.addAll(converte.CoverteParaInteiro(organizar.SepararNumero(numerosJuntos)));
 			
 		}
+		
+		numerosConvertidos = organizar.OrdenaArray(numerosConvertidos);
 			
 		
 		tamanhoArray = numerosJogos.size();
