@@ -3,7 +3,6 @@ package calculos;
 import java.util.ArrayList;
 
 import organizador.Organiza;
-
 import converter.ConverterVariavel;
 import txtFuncion.Txt;
 
@@ -14,12 +13,12 @@ public class CalculoPorcentagem {
 	}
 	
 	//calcula a porcentagem em que um numero sai em pereiodo
-	public void CalculoPorcentagemNumero(String local){
+	public String CalculoPorcentagemNumero(String local){
 		ArrayList<String> numerosJogos = new ArrayList<String>();
 		ArrayList<Integer> numerosConvertidos = new ArrayList<Integer>();
 		double quantidadeJogos,quantidadesNumeros,numerosIguais = 0;
 		double porcentagem;
-		int continua = 0;
+		int continua = 0,separador = 0;
 		String numerosJuntos,arquivoPorcentagem = null;
 		
 		
@@ -46,25 +45,33 @@ public class CalculoPorcentagem {
 					numerosIguais++;
 					if(cont2 == (int)quantidadesNumeros-1){
 						porcentagem = 100 * (numerosIguais / quantidadeJogos);
-						arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "=" + (int) porcentagem + "%";
+						arquivoPorcentagem = arquivoPorcentagem + "\t\t" + cont + "=" + (int) porcentagem + "%";
 					}
 				}else{
 					porcentagem = 100 * (numerosIguais / quantidadeJogos);
 					if(arquivoPorcentagem == null){
 						arquivoPorcentagem = "Quantidades de jogos " + (int) quantidadeJogos;
-						arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "=" + (int) porcentagem + "%";
+						arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "%";
 						continua = cont2;
 						numerosIguais = 0;
 						break;
 					}else{
-						arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "=" + (int) porcentagem + "%";
-						numerosIguais = 0;
-						continua = cont2;
+						if(separador == 4){
+							arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "%";
+							numerosIguais = 0;
+							continua = cont2;
+							separador = 0;
+						}else{
+							arquivoPorcentagem = arquivoPorcentagem + "\t\t" + cont + "= " + (int) porcentagem + "%";
+							numerosIguais = 0;
+							continua = cont2;
+							separador++;
+						}
 						break;
 					}
 				}
 			}
 		}
-		System.out.println(arquivoPorcentagem);
+		return arquivoPorcentagem;
 	}
 }
