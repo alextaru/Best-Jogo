@@ -22,11 +22,15 @@ import calculos.CalculoPorcentagem;
 import txtFuncion.Txt;
 
 public class Principal {
-
-	private JFrame frame;
 	Txt txt = new Txt();
+	private JFrame frame;
+	
 	ArrayList<String> sena = new ArrayList<String>();
+	ArrayList<String> quina = new ArrayList<String>();
+	ArrayList<String> quadra = new ArrayList<String>();
 	CalculoPorcentagem porcentagem = new CalculoPorcentagem();
+	int tamanho;
+	String senaTexto, quinaTexto, quadraTexto;
 
 	public static void main(String[] args) {
 		
@@ -80,7 +84,7 @@ public class Principal {
 			public void actionPerformed(ActionEvent e) {
 				switch(comboBox.getSelectedIndex()){
 					case 0:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/resultados.txt"));
+						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/resutados.txt"));
 						break;
 					case 1:
 						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes1.txt"));
@@ -179,11 +183,11 @@ public class Principal {
 		textAreaSena.setBounds(17, 104, 235, 440);
 		panelIguais.add(textAreaSena);
 		
-		JTextArea textAreaQuina = new JTextArea();
+		final JTextArea textAreaQuina = new JTextArea();
 		textAreaQuina.setBounds(276, 104, 235, 440);
 		panelIguais.add(textAreaQuina);
 		
-		JTextArea textAreaQuadra = new JTextArea();
+		final JTextArea textAreaQuadra = new JTextArea();
 		textAreaQuadra.setBounds(539, 104, 235, 440);
 		panelIguais.add(textAreaQuadra);
 		
@@ -209,11 +213,36 @@ public class Principal {
 		JMenuItem mntmResultadosIguais = new JMenuItem("Resultados iguais");
 		mntmResultadosIguais.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//textAreaSena.setText(" ");
+				//textAreaQuina.setText(" ");
+				//textAreaQuadra.setText(" ");
+				quadraTexto = null;
+				
 				panelIguais.setVisible(true);
 				panelPrincipal.setVisible(false);
 				panelPorcentagem.setVisible(false);
+				
 				sena = txt.GravarTxt("arquivos/resulIgual.txt");
-				textAreaSena.setText(sena.get(0));
+				tamanho = sena.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					textAreaSena.setText(sena.get(cont));
+				}
+				
+				quina = txt.GravarTxt("arquivos/quina.txt");
+				tamanho = quina.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					textAreaQuina.setText(quina.get(cont));
+				}
+				
+				quadra = txt.GravarTxt("arquivos/quadra.txt");
+				tamanho = quadra.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					if(quadraTexto == null)
+						quadraTexto = quadra.get(cont);
+					else
+						quadraTexto = quadraTexto + "\n" + quadra.get(cont);
+				}
+				textAreaQuadra.setText(quadraTexto);
 			}
 		});
 		menu.add(mntmResultadosIguais);
@@ -232,10 +261,36 @@ public class Principal {
 		JButton btnResultadosIguais = new JButton("Resultados iguais");
 		btnResultadosIguais.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//textAreaSena.setText("");
+				//textAreaQuina.setText("");
+				//textAreaQuadra.setText("");
+				
+				quadraTexto = null;
+				
 				panelIguais.setVisible(true);
 				panelPrincipal.setVisible(false);
+				
 				sena = txt.GravarTxt("arquivos/resulIgual.txt");
-				textAreaSena.setText(sena.get(0));
+				tamanho = sena.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					textAreaSena.setText(sena.get(cont));
+				}
+				
+				quina = txt.GravarTxt("arquivos/quina.txt");
+				tamanho = quina.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					textAreaQuina.setText(quina.get(cont));
+				}
+				
+				quadra = txt.GravarTxt("arquivos/quadra.txt");
+				tamanho = quadra.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					if(quadraTexto == null)
+						quadraTexto = quadra.get(cont);
+					else
+						quadraTexto = quadraTexto + "\n" + quadra.get(cont);
+				}
+				textAreaQuadra.setText(quadraTexto);
 			}
 		});
 		btnResultadosIguais.setBounds(124, 106, 228, 53);

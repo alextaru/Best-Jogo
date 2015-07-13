@@ -35,6 +35,7 @@ public class Txt {
 	//retorna as linhas do arquivo txt em arrayList
 	public ArrayList<String> GravarTxt(String arquivo){
 		
+		linhas.clear();
 		try {
 			file = new BufferedReader(new FileReader(arquivo));
 		} catch (FileNotFoundException e) {
@@ -74,7 +75,7 @@ public class Txt {
 	public void Igualdade(){
 		ArrayList<Integer> numeros = new ArrayList<Integer>();
 		ArrayList<Integer> numeros2 = new ArrayList<Integer>();
-		String arquivoIgual = null,data2;
+		String arquivoIgual = null,data2,quina = null,quadra = null;
 		int tamanho;
 		
 		
@@ -105,7 +106,33 @@ public class Txt {
 					if(numeros.get(1) == numeros2.get(1)){
 						if(numeros.get(2) == numeros2.get(2)){
 							if(numeros.get(3) == numeros2.get(3)){
+								if(quadra == null){
+									quadra = data + "-";
+								}else
+									quadra = quadra + data + "-";
+								for(int cont8 = 0;cont8 < 4;cont8++){
+									quadra = quadra + Integer.toString(numeros.get(cont8)) + " ";
+								}
+								quadra = quadra + "\n" + data2 + "-";
+								for(int cont9 = 0;cont9 < 4;cont9++){
+									quadra = quadra + Integer.toString(numeros2.get(cont9)) + " ";
+								}
+								quadra = quadra + "\n";
+								
 								if(numeros.get(4) == numeros2.get(4)){
+									if(quina == null){
+										quina = data + "-";
+									}else
+										quina = quina + data + "-";
+									for(int cont6 = 0;cont6 < 5;cont6++){
+										quina = quina + Integer.toString(numeros.get(cont6)) + " ";
+									}
+									quina = quina + "\n" + data2 + "-";
+									for(int cont7 = 0;cont7 < 5;cont7++){
+										quina = quina + Integer.toString(numeros2.get(cont7)) + " ";
+									}
+									quina = quina + "\n";
+									
 									if(numeros.get(5) == numeros2.get(5)){
 										if(arquivoIgual == null){
 											arquivoIgual = data + "-";
@@ -131,8 +158,18 @@ public class Txt {
 		if(arquivoIgual == null){
 			arquivoIgual = "N‹o a resultado identico!";
 		}
+		if(quina == null){
+			quina = "N‹o a resultado identico!";
+		}
+		if(quadra == null){
+			quadra = "N‹o a resultado identico!";
+		}
+		
+		TxtGerador("arquivos/quina.txt",quina);
 		
 		TxtGerador("arquivos/resulIgual.txt",arquivoIgual);
+		
+		TxtGerador("arquivos/quadra.txt",quadra);
 	}
 }
 			
