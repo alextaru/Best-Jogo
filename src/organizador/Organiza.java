@@ -147,6 +147,7 @@ public class Organiza {
 		txt.TxtGerador("arquivos/mes12.txt",mes12);
 	}
 	
+	//separa os numeros fornecendo a linha do arquivo
 	public ArrayList<String> SepararNumero(String linha){
 		int inicio,fim,tamanho;
 		String numerosJuntos;
