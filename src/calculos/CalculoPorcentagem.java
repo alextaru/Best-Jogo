@@ -56,7 +56,7 @@ public class CalculoPorcentagem {
 						numerosIguais = 0;
 						break;
 					}else{
-						if(separador == 4){
+						if(separador == 3){
 							arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "%";
 							numerosIguais = 0;
 							continua = cont2;

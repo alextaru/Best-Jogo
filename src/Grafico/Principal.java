@@ -19,7 +19,11 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 
 import calculos.CalculoPorcentagem;
+import calculos.Compara;
 import txtFuncion.Txt;
+
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
 
 public class Principal {
 	Txt txt = new Txt();
@@ -31,10 +35,21 @@ public class Principal {
 	CalculoPorcentagem porcentagem = new CalculoPorcentagem();
 	int tamanho;
 	String senaTexto, quinaTexto, quadraTexto;
+	private JTable tablePorcentagem;
 
 	public static void main(String[] args) {
+		Compara comparacao = new Compara();
+		ArrayList<Integer> numeros = new ArrayList<Integer>();
+		numeros.add(34);
+		numeros.add(36);
+		numeros.add(47);
+		numeros.add(51);
+		numeros.add(54);
+		numeros.add(56);
 		
-		EventQueue.invokeLater(new Runnable() {
+		int teste = comparacao.ComparaJogos(numeros);
+		System.out.println(teste);
+		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Principal window = new Principal();
@@ -43,7 +58,7 @@ public class Principal {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 		
 		
 	}
@@ -65,62 +80,45 @@ public class Principal {
 		panelPorcentagem.setLayout(null);
 		panelPorcentagem.setVisible(false);
 		
-		JLabel lblSelecioneOPeriodo = new JLabel("Selecione o periodo para mostrar a porcentagem de cada numero por sorteio");
-		lblSelecioneOPeriodo.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		lblSelecioneOPeriodo.setBounds(113, 49, 573, 21);
-		panelPorcentagem.add(lblSelecioneOPeriodo);
-		
 		final JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Todos resultados", "Janeiro", "Fevereiro", "Mar\u00E7o", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
 		comboBox.setBounds(205, 95, 165, 27);
 		panelPorcentagem.add(comboBox);
 		
-		final JTextArea textAreaPorcentagem = new JTextArea();
-		textAreaPorcentagem.setBounds(33, 155, 728, 305);
-		panelPorcentagem.add(textAreaPorcentagem);
+		JLabel lblSelecioneOPeriodo = new JLabel("Selecione o periodo para mostrar a porcentagem de cada numero por sorteio");
+		lblSelecioneOPeriodo.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblSelecioneOPeriodo.setBounds(113, 49, 573, 21);
+		panelPorcentagem.add(lblSelecioneOPeriodo);
 		
 		JButton btnAnalizar = new JButton("Analizar");
 		btnAnalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				switch(comboBox.getSelectedIndex()){
 					case 0:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/resutados.txt"));
 						break;
 					case 1:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes1.txt"));
 						break;
 					case 2:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes2.txt"));
 						break;
 					case 3:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes3.txt"));
 						break;
 					case 4:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes4.txt"));
 						break;
 					case 5:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes5.txt"));
 						break;
 					case 6:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes6.txt"));
 						break;
 					case 7:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes7.txt"));
 						break;
 					case 8:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes8.txt"));
 						break;
 					case 9:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes9.txt"));
 						break;
 					case 10:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes10.txt"));
 						break;
 					case 11:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes11.txt"));
 						break;
 					case 12:
-						textAreaPorcentagem.setText(porcentagem.CalculoPorcentagemNumero("arquivos/mes12.txt"));
 						break;
 				}
 			}
@@ -128,16 +126,20 @@ public class Principal {
 		btnAnalizar.setBounds(382, 94, 117, 29);
 		panelPorcentagem.add(btnAnalizar);
 		
-		final JPanel panelIguais = new JPanel();
-		panelIguais.setBounds(0, 22, 800, 556);
-		frame.getContentPane().add(panelIguais);
-		panelIguais.setLayout(null);
-		panelIguais.setVisible(false);
+		tablePorcentagem = new JTable();
+		tablePorcentagem.setBounds(27, 536, 734, -390);
+		panelPorcentagem.add(tablePorcentagem);
 		
 		final JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 22, 800, 556);
 		frame.getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(null);
+		
+		final JPanel panelIguais = new JPanel();
+		panelIguais.setBounds(0, 22, 800, 556);
+		frame.getContentPane().add(panelIguais);
+		panelIguais.setLayout(null);
+		panelIguais.setVisible(false);
 		
 		final JLabel lblSena = new JLabel("Sena");
 		lblSena.setFont(new Font("Times New Roman", Font.PLAIN, 18));
@@ -153,6 +155,68 @@ public class Principal {
 		});
 		btnVoltarPorcentagem.setBounds(6, 6, 93, 29);
 		panelPorcentagem.add(btnVoltarPorcentagem);
+		
+		
+		final JTextArea textAreaSena = new JTextArea();
+		textAreaSena.setBounds(17, 104, 235, 440);
+		panelIguais.add(textAreaSena);
+		
+		final JTextArea textAreaQuina = new JTextArea();
+		textAreaQuina.setBounds(276, 104, 235, 440);
+		panelIguais.add(textAreaQuina);
+		
+		final JTextArea textAreaQuadra = new JTextArea();
+		textAreaQuadra.setBounds(539, 104, 235, 440);
+		panelIguais.add(textAreaQuadra);
+		
+		JButton btnResultadosIguais = new JButton("Resultados iguais");
+		btnResultadosIguais.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				quadraTexto = null;
+				
+				panelIguais.setVisible(true);
+				panelPrincipal.setVisible(false);
+				
+				sena = txt.GravarTxt("arquivos/resulIgual.txt");
+				tamanho = sena.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					textAreaSena.setText(sena.get(cont));
+				}
+				
+				quina = txt.GravarTxt("arquivos/quina.txt");
+				tamanho = quina.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					textAreaQuina.setText(quina.get(cont));
+				}
+				
+				quadra = txt.GravarTxt("arquivos/quadra.txt");
+				tamanho = quadra.size();
+				for(int cont = 0; cont < tamanho; cont++){
+					if(quadraTexto == null)
+						quadraTexto = quadra.get(cont);
+					else
+						quadraTexto = quadraTexto + "\n" + quadra.get(cont);
+				}
+				textAreaQuadra.setText(quadraTexto);
+			}
+		});
+		btnResultadosIguais.setBounds(124, 106, 228, 53);
+		panelPrincipal.add(btnResultadosIguais);
+		
+		JButton btnPorcentagemDeNumeros = new JButton("Porcentagem por perido");
+		btnPorcentagemDeNumeros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelPorcentagem.setVisible(true);
+				panelPrincipal.setVisible(false);
+			}
+		});
+		btnPorcentagemDeNumeros.setBounds(429, 106, 228, 53);
+		panelPrincipal.add(btnPorcentagemDeNumeros);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("/Users/alexandre/Documents/workspace/Best Jogo/arquivos/principal.jpg"));
+		lblNewLabel.setBounds(0, 0, 800, 556);
+		panelPrincipal.add(lblNewLabel);
 		
 		JLabel lblQuina = new JLabel("Quina");
 		lblQuina.setFont(new Font("Times New Roman", Font.PLAIN, 18));
@@ -179,18 +243,6 @@ public class Principal {
 		btnVoltarIguais.setBounds(6, 6, 81, 29);
 		panelIguais.add(btnVoltarIguais);
 		
-		final JTextArea textAreaSena = new JTextArea();
-		textAreaSena.setBounds(17, 104, 235, 440);
-		panelIguais.add(textAreaSena);
-		
-		final JTextArea textAreaQuina = new JTextArea();
-		textAreaQuina.setBounds(276, 104, 235, 440);
-		panelIguais.add(textAreaQuina);
-		
-		final JTextArea textAreaQuadra = new JTextArea();
-		textAreaQuadra.setBounds(539, 104, 235, 440);
-		panelIguais.add(textAreaQuadra);
-		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 800, 22);
 		frame.getContentPane().add(menuBar);
@@ -213,9 +265,6 @@ public class Principal {
 		JMenuItem mntmResultadosIguais = new JMenuItem("Resultados iguais");
 		mntmResultadosIguais.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//textAreaSena.setText(" ");
-				//textAreaQuina.setText(" ");
-				//textAreaQuadra.setText(" ");
 				quadraTexto = null;
 				
 				panelIguais.setVisible(true);
@@ -257,54 +306,6 @@ public class Principal {
 			}
 		});
 		menu.add(mntmSair);
-		
-		JButton btnResultadosIguais = new JButton("Resultados iguais");
-		btnResultadosIguais.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//textAreaSena.setText("");
-				//textAreaQuina.setText("");
-				//textAreaQuadra.setText("");
-				
-				quadraTexto = null;
-				
-				panelIguais.setVisible(true);
-				panelPrincipal.setVisible(false);
-				
-				sena = txt.GravarTxt("arquivos/resulIgual.txt");
-				tamanho = sena.size();
-				for(int cont = 0; cont < tamanho; cont++){
-					textAreaSena.setText(sena.get(cont));
-				}
-				
-				quina = txt.GravarTxt("arquivos/quina.txt");
-				tamanho = quina.size();
-				for(int cont = 0; cont < tamanho; cont++){
-					textAreaQuina.setText(quina.get(cont));
-				}
-				
-				quadra = txt.GravarTxt("arquivos/quadra.txt");
-				tamanho = quadra.size();
-				for(int cont = 0; cont < tamanho; cont++){
-					if(quadraTexto == null)
-						quadraTexto = quadra.get(cont);
-					else
-						quadraTexto = quadraTexto + "\n" + quadra.get(cont);
-				}
-				textAreaQuadra.setText(quadraTexto);
-			}
-		});
-		btnResultadosIguais.setBounds(124, 106, 228, 53);
-		panelPrincipal.add(btnResultadosIguais);
-		
-		JButton btnPorcentagemDeNumeros = new JButton("Porcentagem por perido");
-		btnPorcentagemDeNumeros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelPorcentagem.setVisible(true);
-				panelPrincipal.setVisible(false);
-			}
-		});
-		btnPorcentagemDeNumeros.setBounds(429, 106, 228, 53);
-		panelPrincipal.add(btnPorcentagemDeNumeros);
 		
 	}
 }
