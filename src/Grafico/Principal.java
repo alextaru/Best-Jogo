@@ -19,7 +19,6 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 
 import calculos.CalculoPorcentagem;
-import calculos.Compara;
 import txtFuncion.Txt;
 
 import javax.swing.ImageIcon;
@@ -38,7 +37,6 @@ public class Principal {
 	private JTable tablePorcentagem;
 
 	public static void main(String[] args) {
-		Compara comparacao = new Compara();
 		ArrayList<Integer> numeros = new ArrayList<Integer>();
 		numeros.add(34);
 		numeros.add(36);
@@ -47,8 +45,8 @@ public class Principal {
 		numeros.add(54);
 		numeros.add(56);
 		
-		int teste = comparacao.ComparaJogos(numeros);
-		System.out.println(teste);
+		//int teste = comparacao.ComparaJogos(numeros);
+		//System.out.println(teste);
 		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
