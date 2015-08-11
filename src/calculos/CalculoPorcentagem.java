@@ -45,24 +45,24 @@ public class CalculoPorcentagem {
 					numerosIguais++;
 					if(cont2 == (int)quantidadesNumeros-1){
 						porcentagem = 100 * (numerosIguais / quantidadeJogos);
-						arquivoPorcentagem = arquivoPorcentagem + "\t\t" + cont + "=" + (int) porcentagem + "%";
+						arquivoPorcentagem = arquivoPorcentagem + "\t\t" + cont + "=" + (int) porcentagem + "% - " + numerosIguais;
 					}
 				}else{
 					porcentagem = 100 * (numerosIguais / quantidadeJogos);
 					if(arquivoPorcentagem == null){
 						arquivoPorcentagem = "Quantidades de jogos " + (int) quantidadeJogos;
-						arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "%";
+						arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "% - " + numerosIguais;
 						continua = cont2;
 						numerosIguais = 0;
 						break;
 					}else{
 						if(separador == 3){
-							arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "%";
+							arquivoPorcentagem = arquivoPorcentagem + "\n" + cont + "= " + (int) porcentagem + "% - " + numerosIguais;
 							numerosIguais = 0;
 							continua = cont2;
 							separador = 0;
 						}else{
-							arquivoPorcentagem = arquivoPorcentagem + "\t\t" + cont + "= " + (int) porcentagem + "%";
+							arquivoPorcentagem = arquivoPorcentagem + "\t\t" + cont + "= " + (int) porcentagem + "% - " + numerosIguais;
 							numerosIguais = 0;
 							continua = cont2;
 							separador++;
