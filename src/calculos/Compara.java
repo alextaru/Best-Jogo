@@ -14,7 +14,8 @@ public class Compara {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int ComparaJogos(ArrayList<Integer> jogo){
+	//compara se o jogo ja foi sorteado
+	public int ComparaJogos(ArrayList<Integer> jogo,String local){
 		Txt txt = new Txt();
 		Organiza separar = new Organiza();
 		ConverterVariavel converte = new ConverterVariavel();
@@ -23,7 +24,7 @@ public class Compara {
 		ArrayList<Integer> numerosJogo = new ArrayList<Integer>();
 		int tamanho, tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
 		
-		todosResultados = txt.GravarTxt("arquivos/resutados.txt");
+		todosResultados = txt.GravarTxt(local);
 		tamanho = todosResultados.size();
 		
 		for(int cont = 0; cont < tamanho; cont++){
@@ -49,5 +50,41 @@ public class Compara {
 		
 		return resutado;
 	}
+	
+	//compara a frequecia que acerta em determinados numeros na loto
+	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo, String local){
+		Txt txt = new Txt();
+		Organiza separar = new Organiza();
+		ConverterVariavel converte = new ConverterVariavel();
+		
+		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
+		ArrayList<String> todosResultados = new ArrayList<String>();
+		ArrayList<Integer> numerosJogo = new ArrayList<Integer>();
+		int tamanho, tamanhoResultado,tamanhoJogo,acertos = 0;
+		
+		todosResultados = txt.GravarTxt(local);
+		tamanho = todosResultados.size();
+		
+		for(int cont = 0; cont < tamanho; cont++){
+			numerosJogo = converte.CoverteParaInteiro(separar.SepararNumero(todosResultados.get(cont)));
+			
+			tamanhoJogo = jogo.size();
+			tamanhoResultado = numerosJogo.size();
+			
+			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
+				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
+					if(jogo.get(cont2) == numerosJogo.get(cont3)){
+						acertos++;
+					}
+				}
+			}
+			
+			conjuntoACertos.add(acertos);
+			
+		}
+		
+		return conjuntoACertos;
+	}
+
 
 }
