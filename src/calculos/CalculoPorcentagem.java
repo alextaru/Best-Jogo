@@ -87,6 +87,9 @@ public class CalculoPorcentagem {
 		for(int cont = 0; cont < tamanho; cont++){
 			if(numerosComparado == numeros.get(cont)){
 				quantidadeNumero++;
+				if(cont == tamanho-1){
+					numContado = numContado + numerosComparado + " = " + quantidadeNumero + "\n";
+				}
 			}else{
 				if(numContado == null)
 					numContado = numerosComparado + " = " + quantidadeNumero + "\n";

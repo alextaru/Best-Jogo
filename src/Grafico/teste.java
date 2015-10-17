@@ -18,20 +18,25 @@ public class teste {
 		Compara compara = new Compara();
 		HtmlFunc html = new HtmlFunc();
 		
-		html.HtmlReadLoto();
+		//html.HtmlReadLoto();
 		
-		/*ArrayList<Integer> jogo = new ArrayList<Integer>();
+		
+		
+		ArrayList<Integer> jogo = new ArrayList<Integer>();
 		jogo.clear();
 		
 		jogo.add(1);
+		jogo.add(1);
+		jogo.add(1);
 		jogo.add(2);
-		jogo.add(5);
-		jogo.add(6);
-		jogo.add(9);
-		jogo.add(12);
+		jogo.add(2);
 		jogo.add(13);
-		jogo.add(15);
-		jogo.add(16);
+		jogo.add(13);
+		jogo.add(13);
+		
+		
+		System.out.println(porcentagem.NumerosRepetidos(jogo));
+		/*jogo.add(16);
 		jogo.add(18);
 		jogo.add(19);
 		jogo.add(20);
@@ -40,7 +45,7 @@ public class teste {
 		jogo.add(24);
 		
 		
-		//porcentagem.Conta8par7inpar();
+		porcentagem.Conta8par7inpar();
 		System.out.println(compara.ComparaJogos(jogo));*/
 	}
 
