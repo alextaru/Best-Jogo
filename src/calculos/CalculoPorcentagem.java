@@ -7,14 +7,6 @@ import converter.ConverterVariavel;
 import txtFuncion.Txt;
 
 public class CalculoPorcentagem {
-	Txt txt = new Txt();
-	ConverterVariavel converte = new ConverterVariavel();
-	Organiza organizar = new Organiza();
-	
-	ArrayList<String> numerosJogos = new ArrayList<String>();
-	
-	String numerosJuntos;
-	
 	
 	public CalculoPorcentagem() {
 		// TODO Auto-generated constructor stub
@@ -22,12 +14,15 @@ public class CalculoPorcentagem {
 	
 	//calcula a porcentagem em que um numero sai em pereiodo
 	public String CalculoPorcentagemNumero(String local){
-	
+		Txt txt = new Txt();
+		ConverterVariavel converte = new ConverterVariavel();
+		Organiza organizar = new Organiza();
 		
-		double quantidadeJogos,quantidadesNumeros,numerosIguais = 0;
-		double porcentagem;
+		
+		ArrayList<String> numerosJogos = new ArrayList<String>();
+		double quantidadeJogos,quantidadesNumeros,numerosIguais = 0, porcentagem;
 		int continua = 0,separador = 0;
-		String arquivoPorcentagem = null;
+		String arquivoPorcentagem = null, numerosJuntos;
 		ArrayList<Integer> numerosConvertidos = new ArrayList<Integer>();
 		
 		numerosJogos = txt.GravarTxt(local);
@@ -78,25 +73,5 @@ public class CalculoPorcentagem {
 		}
 		return arquivoPorcentagem;
 	}
-	
-	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
-	public void Conta8par7inpar() {
-		int par, inpar, quantidadeJogos, quantidadeNumeros;
-		ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
-		ArrayList<String> numerosSeparados = new ArrayList<String>();
-		
-		
-		ficouSemSair.clear();
-		numerosSeparados.clear();
-		
-		numerosJogos = txt.GravarTxt("arquivos/resutados.txt");
-		
-		quantidadeJogos = numerosJogos.size();
-		
-		for (int cont=0; cont < quantidadeJogos; cont++){
-			numerosSeparados = organizar.SepararNumero(numerosJogos.get(cont));
-		}
-		
-		
-	}
+
 }

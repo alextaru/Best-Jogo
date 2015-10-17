@@ -9,16 +9,18 @@ import organizador.Organiza;
 import txtFuncion.Txt;
 
 public class Compara {
-
+	Txt txt = new Txt();
+	Organiza organiza = new Organiza();
+	ConverterVariavel converte = new ConverterVariavel();
+	
+	
+	
 	public Compara() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	//compara se o jogo ja foi sorteado
 	public int ComparaJogos(ArrayList<Integer> jogo,String local){
-		Txt txt = new Txt();
-		Organiza separar = new Organiza();
-		ConverterVariavel converte = new ConverterVariavel();
 		
 		ArrayList<String> todosResultados = new ArrayList<String>();
 		ArrayList<Integer> numerosJogo = new ArrayList<Integer>();
@@ -28,7 +30,7 @@ public class Compara {
 		tamanho = todosResultados.size();
 		
 		for(int cont = 0; cont < tamanho; cont++){
-			numerosJogo = converte.CoverteParaInteiro(separar.SepararNumero(todosResultados.get(cont)));
+			numerosJogo = converte.CoverteParaInteiro(organiza.SepararNumero(todosResultados.get(cont)));
 			
 			tamanhoJogo = jogo.size();
 			tamanhoResultado = numerosJogo.size();
@@ -53,9 +55,6 @@ public class Compara {
 	
 	//compara a frequecia que acerta em determinados numeros na loto
 	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo, String local){
-		Txt txt = new Txt();
-		Organiza separar = new Organiza();
-		ConverterVariavel converte = new ConverterVariavel();
 		
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
 		ArrayList<String> todosResultados = new ArrayList<String>();
@@ -66,7 +65,7 @@ public class Compara {
 		tamanho = todosResultados.size();
 		
 		for(int cont = 0; cont < tamanho; cont++){
-			numerosJogo = converte.CoverteParaInteiro(separar.SepararNumero(todosResultados.get(cont)));
+			numerosJogo = converte.CoverteParaInteiro(organiza.SepararNumero(todosResultados.get(cont)));
 			
 			tamanhoJogo = jogo.size();
 			tamanhoResultado = numerosJogo.size();
@@ -85,6 +84,30 @@ public class Compara {
 		
 		return conjuntoACertos;
 	}
+	
+	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
+		public void Conta8par7inpar() {
+			
+			
+			int par, inpar, quantidadeJogos, quantidadeNumeros;
+			ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
+			ArrayList<String> numerosSeparados = new ArrayList<String>();
+			ArrayList<String> numerosJogos = new ArrayList<String>();
+			String numerosJuntos;
+			
+			ficouSemSair.clear();
+			numerosSeparados.clear();
+			
+			numerosJogos = txt.GravarTxt("arquivos/resutadosLoto.txt");
+			
+			quantidadeJogos = numerosJogos.size();
+			
+			for (int cont=0; cont < quantidadeJogos; cont++){
+				numerosSeparados = organiza.SepararNumero(numerosJogos.get(cont));
+			}
+			
+			
+		}
 
 
 }
