@@ -8,6 +8,8 @@ import txtFuncion.Txt;
 
 public class CalculoPorcentagem {
 	
+	Organiza organizar = new Organiza();
+	
 	public CalculoPorcentagem() {
 		// TODO Auto-generated constructor stub
 	}
@@ -16,8 +18,6 @@ public class CalculoPorcentagem {
 	public String CalculoPorcentagemNumero(String local){
 		Txt txt = new Txt();
 		ConverterVariavel converte = new ConverterVariavel();
-		Organiza organizar = new Organiza();
-		
 		
 		ArrayList<String> numerosJogos = new ArrayList<String>();
 		double quantidadeJogos,quantidadesNumeros,numerosIguais = 0, porcentagem;
@@ -72,6 +72,33 @@ public class CalculoPorcentagem {
 			}
 		}
 		return arquivoPorcentagem;
+	}
+	
+	
+	//conta a quantidade de numeros repetidos de uma array
+	public String NumerosRepetidos(ArrayList<Integer> numeros){
+		String numContado = null;
+		int numerosComparado, tamanho, quantidadeNumero = 0;
+		
+		numeros = organizar.OrdenaArray(numeros);
+		tamanho = numeros.size();
+		
+		numerosComparado = numeros.get(0);
+		for(int cont = 0; cont < tamanho; cont++){
+			if(numerosComparado == numeros.get(cont)){
+				quantidadeNumero++;
+			}else{
+				if(numContado == null)
+					numContado = numerosComparado + " = " + quantidadeNumero + "\n";
+				else
+					numContado = numContado + numerosComparado + " = " + quantidadeNumero + "\n";
+				
+				quantidadeNumero = 1;
+				numerosComparado = numeros.get(cont);
+			}
+		}
+		
+		return numContado;
 	}
 
 }
