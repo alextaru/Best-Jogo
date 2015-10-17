@@ -21,7 +21,7 @@ public class Compara {
 		
 		ArrayList<String> todosResultados = new ArrayList<String>();
 		ArrayList<Integer> numerosJogo = new ArrayList<Integer>();
-		int tamanho,tamanhoJogo,acertos = 0,resutado = 0;
+		int tamanho, tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
 		
 		todosResultados = txt.GravarTxt("arquivos/resutados.txt");
 		tamanho = todosResultados.size();
@@ -30,9 +30,10 @@ public class Compara {
 			numerosJogo = converte.CoverteParaInteiro(separar.SepararNumero(todosResultados.get(cont)));
 			
 			tamanhoJogo = jogo.size();
+			tamanhoResultado = numerosJogo.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
-				for(int cont3 = 0; cont3 < 6; cont3++){
+				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
 					if(jogo.get(cont2) == numerosJogo.get(cont3)){
 						acertos++;
 					}
