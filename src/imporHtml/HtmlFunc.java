@@ -9,19 +9,18 @@ import java.text.SimpleDateFormat;
 import txtFuncion.Txt;
 
 public class HtmlFunc {
-	private String arquivo, condicao1;// string arquivo Ž onde Ž gravado o arquivo organizado
+	private String arquivo, condicao1;// string arquivo ï¿½ onde ï¿½ gravado o arquivo organizado
 	private int clear;
 
 	public HtmlFunc() {
 		arquivo = null;
-		condicao1 = "td rowspan=\"1\"";
+		condicao1 = "td rowspan";
 		clear = 0;
 	}
 	
 
-	// funcao para ler o arquivo html e organizar apenas as datas e resutador em
-	// uma unica string
-	public void HtmlRead() {
+	// criar um arquivo txt da mega com os resultados
+	public void HtmlReadMega() {
 		try {
 			String linha, palavra;
 			int inicio, fim, cont = 0;
@@ -29,7 +28,7 @@ public class HtmlFunc {
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			formato.setLenient(false);
 			
-			BufferedReader file = new BufferedReader(new FileReader("//Users//alexandre//Documents//workspace//Best Jogo//arquivos//D_MEGA.html"));
+			BufferedReader file = new BufferedReader(new FileReader("arquivos//D_MEGA.htm"));
 
 			// faz a leitura de todas as linha do arquivo html
 			while (file.ready()) {
@@ -41,6 +40,12 @@ public class HtmlFunc {
 
 				if (inicio != -1) {// correcao do erro quando nao acha os caracteres < e > retorna -1
 					palavra = linha.substring(inicio + 1, fim);
+					
+					try {
+						palavra = palavra.substring(0, 10);
+					} catch (Exception e) {
+					    palavra = "null";
+					}
 
 					/* compara a palavra achada se esta igual a condicao que
 					 aparece antes da data no arquivo html*/
@@ -52,7 +57,7 @@ public class HtmlFunc {
 						if (cont == 0) {// cont para separar data de numeros dos jogos
 							try {
 
-								// testa se a palavra achada entre os caracteres Ž uma data
+								// testa se a palavra achada entre os caracteres ï¿½ uma data
 								java.util.Date dataJogo = null;
 								dataJogo = (java.util.Date) formato.parse(palavra);
 								if (clear == 0) {
@@ -84,8 +89,83 @@ public class HtmlFunc {
 		
 		Txt gerartxt = new Txt();
 		
-		gerartxt.TxtGerador("arquivos/resutados.txt", arquivo);
+		gerartxt.TxtGerador("arquivos/resutadosMega.txt", arquivo);
 
 	}
+	
+	// criar um arquivo txt da lotofacil com os resultados
+	public void HtmlReadLoto() {
+		try {
+			String linha, palavra;
+			int inicio, fim, cont = 0;
+
+			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			formato.setLenient(false);
+			
+			BufferedReader file = new BufferedReader(new FileReader("arquivos//D_LOTFAC.htm"));
+
+			// faz a leitura de todas as linha do arquivo html
+			while (file.ready()) {
+				linha = file.readLine();
+				
+				// procura na linha a palavra que esta entre os caracteres < e >
+				inicio = linha.indexOf("<");
+				fim = linha.indexOf(">");
+
+				if (inicio != -1) {// correcao do erro quando nao acha os caracteres < e > retorna -1
+					palavra = linha.substring(inicio + 1, fim);
+					
+					try {
+						palavra = palavra.substring(0, 10);
+					} catch (Exception e) {
+					    palavra = "null";
+					}
+
+					/* compara a palavra achada se esta igual a condicao que
+					 aparece antes da data no arquivo html*/
+					if (palavra.equals(condicao1)) {
+						
+						inicio = fim;
+						fim = linha.lastIndexOf("<");
+						palavra = linha.substring(inicio + 1, fim);// pega a proxima palavra em os caracteres < e >
+						if (cont == 0) {// cont para separar data de numeros dos jogos
+							try {
+
+								// testa se a palavra achada entre os caracteres ï¿½ uma data
+								java.util.Date dataJogo = null;
+								dataJogo = (java.util.Date) formato.parse(palavra);
+								if (clear == 0) {
+									arquivo = palavra + "<";
+									clear++;
+								} else
+									arquivo = arquivo + palavra +"<";
+
+								cont++;
+
+							} catch (ParseException e) {
+							}
+						} else {
+							if (cont == 15) {
+								arquivo = arquivo + palavra + ">\n";
+								cont = 0;
+							} else {
+								arquivo = arquivo + palavra + ";";
+								cont++;
+							}
+						}
+					}
+				}
+			}
+			file.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
+		Txt gerartxt = new Txt();
+		
+		gerartxt.TxtGerador("arquivos/resutadosLoto.txt", arquivo);
+
+	}
+
 
 }

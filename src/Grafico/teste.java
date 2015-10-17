@@ -1,5 +1,7 @@
 package Grafico;
 
+import imporHtml.HtmlFunc;
+
 import java.util.ArrayList;
 
 import calculos.CalculoPorcentagem;
@@ -14,7 +16,11 @@ public class teste {
 	public static void main(String[] args) {
 		CalculoPorcentagem porcentagem = new CalculoPorcentagem();
 		Compara compara = new Compara();
-		ArrayList<Integer> jogo = new ArrayList<Integer>();
+		HtmlFunc html = new HtmlFunc();
+		
+		html.HtmlReadLoto();
+		
+		/*ArrayList<Integer> jogo = new ArrayList<Integer>();
 		jogo.clear();
 		
 		jogo.add(1);
@@ -35,7 +41,7 @@ public class teste {
 		
 		
 		//porcentagem.Conta8par7inpar();
-		System.out.println(compara.ComparaJogos(jogo));
+		System.out.println(compara.ComparaJogos(jogo));*/
 	}
 
 }
