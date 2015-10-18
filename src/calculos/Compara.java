@@ -53,7 +53,7 @@ public class Compara {
 		return resutado;
 	}
 	
-	//compara a frequecia que acerta em determinados numeros na loto
+	//compara a frequecia que em determinados numeros sai na loto
 	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo, String local){
 		
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
@@ -85,29 +85,64 @@ public class Compara {
 		return conjuntoACertos;
 	}
 	
-	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
-		public void Conta8par7inpar() {
+	
+	//conta quantidade de par
+	public int ContaPar(ArrayList<Integer> jogo){
+		int tamanho, par = 0, numero, resultado;
+		
+		tamanho = jogo.size();
+		
+		for(int cont = 0; cont < tamanho; cont++){
+			numero = jogo.get(cont);
+			resultado = numero % 2;
 			
-			
-			int par, inpar, quantidadeJogos, quantidadeNumeros;
-			ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
-			ArrayList<String> numerosSeparados = new ArrayList<String>();
-			ArrayList<String> numerosJogos = new ArrayList<String>();
-			String numerosJuntos;
-			
-			ficouSemSair.clear();
-			numerosSeparados.clear();
-			
-			numerosJogos = txt.GravarTxt("arquivos/resutadosLoto.txt");
-			
-			quantidadeJogos = numerosJogos.size();
-			
-			for (int cont=0; cont < quantidadeJogos; cont++){
-				numerosSeparados = organiza.SepararNumero(numerosJogos.get(cont));
-			}
-			
-			
+			if(resultado == 0)
+				par++;
 		}
-
-
+		
+		return par;
+	}
+	
+	//conta quantidade de inpar
+	public int ContaInpar(ArrayList<Integer> jogo){
+		int tamanho, inpar = 0, numero, resultado;
+		
+		tamanho = jogo.size();
+		
+		for(int cont = 0; cont < tamanho; cont++){
+			numero = jogo.get(cont);
+			resultado = numero % 2;
+			
+			if(resultado != 0)
+				inpar++;
+		}
+		
+		return inpar;
+	}
+	
+	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
+	public void Conta8par7inpar() {
+			
+			
+		int par, inpar, quantidadeJogos, quantidadeNumeros;
+		ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
+		ArrayList<String> numerosSeparados = new ArrayList<String>();
+		ArrayList<String> numerosJogos = new ArrayList<String>();
+		String numerosJuntos;
+			
+		ficouSemSair.clear();
+		numerosSeparados.clear();
+			
+		numerosJogos = txt.GravarTxt("arquivos/resutadosLoto.txt");
+			
+		quantidadeJogos = numerosJogos.size();
+			
+		for (int cont=0; cont < quantidadeJogos; cont++){
+			numerosSeparados = organiza.SepararNumero(numerosJogos.get(cont));
+				
+				
+		}
+			
+			
+	}
 }
