@@ -13,31 +13,34 @@ public class Compara {
 	Organiza organiza = new Organiza();
 	ConverterVariavel converte = new ConverterVariavel();
 	
+	ArrayList<String> numerosSeparados = new ArrayList<String>();
+	ArrayList<Integer> numerosConvertidos = new ArrayList<Integer>();
+	ArrayList<String> numerosJogo = new ArrayList<String>();
 	
+	int quantidadeJogos;
 	
 	public Compara() {
-		// TODO Auto-generated constructor stub
+		numerosJogo = txt.GravarTxt("arquivos/resutadosLoto.txt");
+		quantidadeJogos = numerosJogo.size();
 	}
 	
 	//compara se o jogo ja foi sorteado
 	public int ComparaJogos(ArrayList<Integer> jogo,String local){
 		
-		ArrayList<String> todosResultados = new ArrayList<String>();
-		ArrayList<Integer> numerosJogo = new ArrayList<Integer>();
-		int tamanho, tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
 		
-		todosResultados = txt.GravarTxt(local);
-		tamanho = todosResultados.size();
+		ArrayList<Integer> numerosJogos = new ArrayList<Integer>();
+		int tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
 		
-		for(int cont = 0; cont < tamanho; cont++){
-			numerosJogo = converte.CoverteParaInteiro(organiza.SepararNumero(todosResultados.get(cont)));
+		
+		for(int cont = 0; cont < quantidadeJogos; cont++){
+			numerosJogos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
 			
 			tamanhoJogo = jogo.size();
 			tamanhoResultado = numerosJogo.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
 				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
-					if(jogo.get(cont2) == numerosJogo.get(cont3)){
+					if(jogo.get(cont2) == numerosJogos.get(cont3)){
 						acertos++;
 					}
 				}
@@ -57,22 +60,18 @@ public class Compara {
 	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo, String local){
 		
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
-		ArrayList<String> todosResultados = new ArrayList<String>();
-		ArrayList<Integer> numerosJogo = new ArrayList<Integer>();
+		ArrayList<Integer> numerosJogos = new ArrayList<Integer>();
 		int tamanho, tamanhoResultado,tamanhoJogo,acertos = 0;
 		
-		todosResultados = txt.GravarTxt(local);
-		tamanho = todosResultados.size();
-		
-		for(int cont = 0; cont < tamanho; cont++){
-			numerosJogo = converte.CoverteParaInteiro(organiza.SepararNumero(todosResultados.get(cont)));
+		for(int cont = 0; cont < quantidadeJogos; cont++){
+			numerosJogos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
 			
 			tamanhoJogo = jogo.size();
 			tamanhoResultado = numerosJogo.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
 				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
-					if(jogo.get(cont2) == numerosJogo.get(cont3)){
+					if(jogo.get(cont2) == numerosJogos.get(cont3)){
 						acertos++;
 					}
 				}
@@ -122,23 +121,13 @@ public class Compara {
 	
 	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
 	public ArrayList<Integer> Conta8par7inpar() {
-			
-			
-		int par, inpar, quantidadeJogos, naoSaiu = 0;
+		int par, inpar, naoSaiu = 0;
 		ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
-		ArrayList<String> numerosSeparados = new ArrayList<String>();
-		ArrayList<String> numerosJogos = new ArrayList<String>();
-		ArrayList<Integer> numerosConvertidos = new ArrayList<Integer>();
-			
+		
 		ficouSemSair.clear();
-		numerosSeparados.clear();
-			
-		numerosJogos = txt.GravarTxt("arquivos/resutadosLoto.txt");
-			
-		quantidadeJogos = numerosJogos.size();
 			
 		for (int cont=0; cont < quantidadeJogos; cont++){
-			numerosSeparados = organiza.SepararNumero(numerosJogos.get(cont));
+			numerosSeparados = organiza.SepararNumero(numerosJogo.get(cont));
 			numerosConvertidos = converte.CoverteParaInteiro(numerosSeparados);	
 			
 			par = ContaPar(numerosConvertidos);
@@ -159,5 +148,18 @@ public class Compara {
 		}
 			
 		return ficouSemSair;	
+	}
+	
+	//retorna a quantodade de veses que um numero nao saiu
+	public void QuantNumSemSair() {
+		int naoSaiu = 0;
+		
+		quantidadeJogos = numerosJogo.size();
+		
+		for (int numero = 1; numero < 26; numero++){
+			for (int cont=0; cont < quantidadeJogos; cont++){
+				
+			}
+		}
 	}
 }
