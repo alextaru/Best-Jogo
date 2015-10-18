@@ -18,7 +18,7 @@ public class teste {
 		Compara compara = new Compara();
 		HtmlFunc html = new HtmlFunc();
 		
-		//html.HtmlReadLoto();
+		/*html.HtmlReadLoto();
 		
 		
 		
@@ -26,17 +26,17 @@ public class teste {
 		jogo.clear();
 		
 		jogo.add(1);
-		//jogo.add(1);
-		//jogo.add(1);
+		jogo.add(1);
+		jogo.add(1);
 		jogo.add(2);
-		//jogo.add(2);
+		jogo.add(2);
 		jogo.add(13);
-		//jogo.add(13);
-		//jogo.add(13);
+		jogo.add(13);
+		jogo.add(13);
 		
 		
 		System.out.println(compara.ContaPar(jogo));
-		/*jogo.add(16);
+		jogo.add(16);
 		jogo.add(18);
 		jogo.add(19);
 		jogo.add(20);
@@ -45,8 +45,8 @@ public class teste {
 		jogo.add(24);*/
 		
 		
-		//compara.Conta8par7inpar();
-		System.out.println(compara.ContaInpar(jogo));
+		
+		System.out.println(compara.QuantNumSemSair());
 	}
 
 }

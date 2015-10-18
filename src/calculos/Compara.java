@@ -147,16 +147,42 @@ public class Compara {
 		return ficouSemSair;	
 	}
 	
-	//retorna a quantodade de veses que um numero nao saiu
-	public void QuantNumSemSair() {
-		int naoSaiu = 0;
-		
-		quantidadeJogos = numerosJogo.size();
+	//retorna a maxima quantodade de veses que um numero nao saiu
+	public int QuantNumSemSair() {
+		int naoSaiu = 0, tamanho,contNaoSaiu;
+		boolean saiu;
 		
 		for (int numero = 1; numero < 26; numero++){
+			
+			saiu = false;
+			contNaoSaiu = 0;
+			
 			for (int cont=0; cont < quantidadeJogos; cont++){
 				
+				numerosSeparados = organiza.SepararNumero(numerosJogo.get(cont));
+				numerosConvertidos = converte.CoverteParaInteiro(numerosSeparados);	
+				
+				tamanho = numerosConvertidos.size();
+				
+				for(int contResultado = 0; contResultado < tamanho; contResultado++){
+					if(numero == numerosConvertidos.get(contResultado))
+					    saiu = true;
+				}
+				
+				if(saiu == true){
+					
+					if(contNaoSaiu > naoSaiu)
+						naoSaiu = contNaoSaiu;
+					contNaoSaiu = 0;
+					saiu = false;
+					
+				}else
+					contNaoSaiu++;
 			}
+			if(contNaoSaiu > naoSaiu)
+				naoSaiu = contNaoSaiu;
 		}
+		
+		return naoSaiu;
 	}
 }
