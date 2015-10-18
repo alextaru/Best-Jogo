@@ -27,20 +27,18 @@ public class Compara {
 	//compara se o jogo ja foi sorteado
 	public int ComparaJogos(ArrayList<Integer> jogo,String local){
 		
-		
-		ArrayList<Integer> numerosJogos = new ArrayList<Integer>();
 		int tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
 		
 		
 		for(int cont = 0; cont < quantidadeJogos; cont++){
-			numerosJogos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
+			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
 			
 			tamanhoJogo = jogo.size();
 			tamanhoResultado = numerosJogo.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
 				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
-					if(jogo.get(cont2) == numerosJogos.get(cont3)){
+					if(jogo.get(cont2) == numerosConvertidos.get(cont3)){
 						acertos++;
 					}
 				}
@@ -60,18 +58,17 @@ public class Compara {
 	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo, String local){
 		
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
-		ArrayList<Integer> numerosJogos = new ArrayList<Integer>();
-		int tamanho, tamanhoResultado,tamanhoJogo,acertos = 0;
+		int tamanhoResultado,tamanhoJogo,acertos = 0;
 		
 		for(int cont = 0; cont < quantidadeJogos; cont++){
-			numerosJogos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
+			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
 			
 			tamanhoJogo = jogo.size();
 			tamanhoResultado = numerosJogo.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
 				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
-					if(jogo.get(cont2) == numerosJogos.get(cont3)){
+					if(jogo.get(cont2) == numerosConvertidos.get(cont3)){
 						acertos++;
 					}
 				}
