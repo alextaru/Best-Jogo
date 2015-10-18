@@ -121,14 +121,14 @@ public class Compara {
 	}
 	
 	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
-	public void Conta8par7inpar() {
+	public ArrayList<Integer> Conta8par7inpar() {
 			
 			
-		int par, inpar, quantidadeJogos, quantidadeNumeros;
+		int par, inpar, quantidadeJogos, naoSaiu = 0;
 		ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
 		ArrayList<String> numerosSeparados = new ArrayList<String>();
 		ArrayList<String> numerosJogos = new ArrayList<String>();
-		String numerosJuntos;
+		ArrayList<Integer> numerosConvertidos = new ArrayList<Integer>();
 			
 		ficouSemSair.clear();
 		numerosSeparados.clear();
@@ -139,10 +139,25 @@ public class Compara {
 			
 		for (int cont=0; cont < quantidadeJogos; cont++){
 			numerosSeparados = organiza.SepararNumero(numerosJogos.get(cont));
-				
-				
+			numerosConvertidos = converte.CoverteParaInteiro(numerosSeparados);	
+			
+			par = ContaPar(numerosConvertidos);
+			inpar = ContaInpar(numerosConvertidos);
+			
+			if(par == 8){
+				if(inpar == 7){
+					if(cont == 0)
+						naoSaiu = 0;
+					else{
+						ficouSemSair.add(naoSaiu);
+						naoSaiu = 0;
+					}
+				}else
+					naoSaiu++;
+			}else
+				naoSaiu++;
 		}
 			
-			
+		return ficouSemSair;	
 	}
 }
