@@ -75,12 +75,12 @@ public class Txt {
 	public void Igualdade(){
 		ArrayList<Integer> numeros = new ArrayList<Integer>();
 		ArrayList<Integer> numeros2 = new ArrayList<Integer>();
-		String arquivoIgual = null,data2,quina = null,quadra = null;
+		String arquivoIgual = null,data2, quinze = null, quatorze = null, treze = null,doze = null,onze = null;
 		int tamanho;
 		
 		
 		
-		linhas = GravarTxt("arquivos/resutados.txt");
+		linhas = GravarTxt("arquivos/resutadosLoto.txt");
 		
 		tamanho = linhas.size();
 			
@@ -101,52 +101,96 @@ public class Txt {
 				numeros2 = organiza.OrdenaArray(numeros2);
 				
 							
-				//compara se o numero resutado Ž igual
+				//compara se o numero resutado ï¿½ igual
 				if(numeros.get(0) == numeros2.get(0)){
 					if(numeros.get(1) == numeros2.get(1)){
 						if(numeros.get(2) == numeros2.get(2)){
 							if(numeros.get(3) == numeros2.get(3)){
-								if(quadra == null){
-									quadra = data + "-";
-								}else
-									quadra = quadra + data + "-";
-								for(int cont8 = 0;cont8 < 4;cont8++){
-									quadra = quadra + Integer.toString(numeros.get(cont8)) + " ";
-								}
-								quadra = quadra + "\n" + data2 + "-";
-								for(int cont9 = 0;cont9 < 4;cont9++){
-									quadra = quadra + Integer.toString(numeros2.get(cont9)) + " ";
-								}
-								quadra = quadra + "\n";
-								
 								if(numeros.get(4) == numeros2.get(4)){
-									if(quina == null){
-										quina = data + "-";
-									}else
-										quina = quina + data + "-";
-									for(int cont6 = 0;cont6 < 5;cont6++){
-										quina = quina + Integer.toString(numeros.get(cont6)) + " ";
-									}
-									quina = quina + "\n" + data2 + "-";
-									for(int cont7 = 0;cont7 < 5;cont7++){
-										quina = quina + Integer.toString(numeros2.get(cont7)) + " ";
-									}
-									quina = quina + "\n";
-									
 									if(numeros.get(5) == numeros2.get(5)){
-										if(arquivoIgual == null){
-											arquivoIgual = data + "-";
-										}else
-											arquivoIgual = arquivoIgual + data + "-";
-										
-										for(int cont4 = 0;cont4 < 6;cont4++){
-											arquivoIgual = arquivoIgual + Integer.toString(numeros.get(cont4)) + " ";
+										if(numeros.get(6) == numeros2.get(6)){
+											if(numeros.get(7) == numeros2.get(7)){
+												if(numeros.get(8) == numeros2.get(8)){
+													if(numeros.get(9) == numeros2.get(9)){
+														if(numeros.get(10) == numeros2.get(10)){
+															if(numeros.get(11) == numeros2.get(11)){
+																if(numeros.get(12) == numeros2.get(12)){
+																	if(numeros.get(13) == numeros2.get(13)){
+																		if(numeros.get(14) == numeros2.get(14)){
+																			if(quinze == null){
+																				quinze = data + "-";
+																			}else
+																				quinze = quinze + data + "-";
+																			for(int cont6 = 0;cont6 < 15;cont6++){
+																				quinze = quinze + Integer.toString(numeros.get(cont6)) + " ";
+																			}
+																			quinze = quinze + "\n" + data2 + "-";
+																			for(int cont7 = 0;cont7 < 15;cont7++){
+																				quinze = quinze + Integer.toString(numeros2.get(cont7)) + " ";
+																			}
+																			quinze = quinze + "\n";
+																		}else{
+																			if(quatorze == null){
+																				quatorze = data + "-";
+																			}else
+																				quatorze = quatorze + data + "-";
+																			for(int cont6 = 0;cont6 < 14;cont6++){
+																				quatorze = quatorze + Integer.toString(numeros.get(cont6)) + " ";
+																			}
+																			quatorze = quatorze + "\n" + data2 + "-";
+																			for(int cont7 = 0;cont7 < 14;cont7++){
+																				quatorze = quatorze + Integer.toString(numeros2.get(cont7)) + " ";
+																			}
+																			quatorze = quatorze + "\n";
+																		}
+																	}else{
+																		if(treze == null){
+																			treze = data + "-";
+																		}else
+																			treze = treze + data + "-";
+																		for(int cont6 = 0;cont6 < 13;cont6++){
+																			treze = treze + Integer.toString(numeros.get(cont6)) + " ";
+																		}
+																		doze = doze + "\n" + data2 + "-";
+																		for(int cont7 = 0;cont7 < 13;cont7++){
+																			treze = treze + Integer.toString(numeros2.get(cont7)) + " ";
+																		}
+																		treze = treze + "\n";
+																	}
+																}else{
+																	if(doze == null){
+																		doze = data + "-";
+																	}else
+																		doze = doze + data + "-";
+																	for(int cont6 = 0;cont6 < 12;cont6++){
+																		doze = doze + Integer.toString(numeros.get(cont6)) + " ";
+																	}
+																	doze = doze + "\n" + data2 + "-";
+																	for(int cont7 = 0;cont7 < 12;cont7++){
+																		doze = doze + Integer.toString(numeros2.get(cont7)) + " ";
+																	}
+																	doze = doze + "\n";
+																}
+															}else{
+																if(onze == null){
+																onze = data + "-";
+																}else
+																	onze = onze + data + "-";
+																for(int cont8 = 0;cont8 < 11;cont8++){
+																	onze = onze + Integer.toString(numeros.get(cont8)) + " ";
+																}
+																onze = onze + "\n" + data2 + "-";
+															
+																for(int cont9 = 0;cont9 < 11;cont9++){
+																	onze = onze + Integer.toString(numeros2.get(cont9)) + " ";
+																}
+																onze = onze + "\n";
+															}
+														}
+													}
+												}
+											}
 										}
-										arquivoIgual = arquivoIgual + "\n" + data2 + "-";
-										for(int cont5 = 0;cont5 < 6;cont5++){
-											arquivoIgual = arquivoIgual + Integer.toString(numeros2.get(cont5)) + " ";
-										}
-										arquivoIgual = arquivoIgual + "\n";
 									}
 								}
 							}
@@ -155,21 +199,33 @@ public class Txt {
 				}
 			}
 		}
-		if(arquivoIgual == null){
-			arquivoIgual = "N‹o a resultado identico!";
+		
+														
+		if(onze == null){
+			onze = "Nï¿½o a resultado identico!";
 		}
-		if(quina == null){
-			quina = "N‹o a resultado identico!";
+		if(doze == null){
+			doze = "Nï¿½o a resultado identico!";
 		}
-		if(quadra == null){
-			quadra = "N‹o a resultado identico!";
+		if(treze == null){
+			treze = "Nï¿½o a resultado identico!";
+		}
+		if(quatorze == null){
+			quatorze = "Nï¿½o a resultado identico!";
+		}
+		if(quinze == null){
+			quinze = "Nï¿½o a resultado identico!";
 		}
 		
-		TxtGerador("arquivos/quina.txt",quina);
+		TxtGerador("arquivos/onze.txt",onze);
 		
-		TxtGerador("arquivos/resulIgual.txt",arquivoIgual);
+		TxtGerador("arquivos/doze.txt",doze);
 		
-		TxtGerador("arquivos/quadra.txt",quadra);
+		TxtGerador("arquivos/treze.txt",treze);
+		
+		TxtGerador("arquivos/quatorze.txt",quatorze);
+		
+		TxtGerador("arquivos/quinze.txt",quinze);
 	}
 }
 			

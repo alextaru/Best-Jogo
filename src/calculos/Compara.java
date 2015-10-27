@@ -26,7 +26,7 @@ public class Compara {
 	}
 	
 	//compara se o jogo ja foi sorteado
-	public int ComparaJogos(ArrayList<Integer> jogo,String local){
+	public int ComparaJogos(ArrayList<Integer> jogo){
 		
 		int tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
 		
@@ -35,7 +35,7 @@ public class Compara {
 			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
 			
 			tamanhoJogo = jogo.size();
-			tamanhoResultado = numerosJogo.size();
+			tamanhoResultado = numerosConvertidos.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
 				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
