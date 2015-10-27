@@ -4,6 +4,8 @@ import imporHtml.HtmlFunc;
 
 import java.util.ArrayList;
 
+import organizador.Organiza;
+
 import calculos.CalculoPorcentagem;
 import calculos.Compara;
 
@@ -18,35 +20,35 @@ public class teste {
 		Compara compara = new Compara();
 		HtmlFunc html = new HtmlFunc();
 		
-		/*html.HtmlReadLoto();
+		
+		//String local = "arquivos/resutadosLoto.txt";
+		
+		//html.HtmlReadLoto();
 		
 		
 		
 		ArrayList<Integer> jogo = new ArrayList<Integer>();
 		jogo.clear();
 		
-		jogo.add(1);
-		jogo.add(1);
-		jogo.add(1);
 		jogo.add(2);
-		jogo.add(2);
+		jogo.add(3);
+		jogo.add(5);
+		jogo.add(7);
+		jogo.add(11);
 		jogo.add(13);
-		jogo.add(13);
-		jogo.add(13);
-		
-		
-		System.out.println(compara.ContaPar(jogo));
-		jogo.add(16);
-		jogo.add(18);
+		jogo.add(17);
 		jogo.add(19);
-		jogo.add(20);
-		jogo.add(22);
 		jogo.add(23);
-		jogo.add(24);*/
+		//jogo.add(8);
+		//jogo.add(23);
+		//jogo.add(3);
+		//jogo.add(10);
+		//jogo.add(6);
+		//jogo.add(15);
 		
+		//System.out.println(porcentagem.NumerosRepetidos(compara.ComparaFrequeciaAcerto(jogo)));
 		
-		
-		System.out.println(compara.QuantNumSemSair());
+		System.out.println(porcentagem.NumerosRepetidos(compara.ContaInparAcertoAnterior()));
 	}
 
 }

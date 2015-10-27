@@ -9,6 +9,7 @@ import organizador.Organiza;
 import txtFuncion.Txt;
 
 public class Compara {
+	CalculoPorcentagem porcentagem = new CalculoPorcentagem();
 	Txt txt = new Txt();
 	Organiza organiza = new Organiza();
 	ConverterVariavel converte = new ConverterVariavel();
@@ -55,7 +56,7 @@ public class Compara {
 	}
 	
 	//compara a frequecia que em determinados numeros sai na loto
-	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo, String local){
+	public ArrayList<Integer> ComparaFrequeciaAcerto(ArrayList<Integer> jogo){
 		
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
 		int tamanhoResultado,tamanhoJogo,acertos = 0;
@@ -64,7 +65,7 @@ public class Compara {
 			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
 			
 			tamanhoJogo = jogo.size();
-			tamanhoResultado = numerosJogo.size();
+			tamanhoResultado = numerosConvertidos.size();
 			
 			for(int cont2 = 0;cont2 < tamanhoJogo; cont2++){
 				for(int cont3 = 0; cont3 < tamanhoResultado; cont3++){
@@ -75,6 +76,7 @@ public class Compara {
 			}
 			
 			conjuntoACertos.add(acertos);
+			acertos = 0;
 			
 		}
 		
@@ -148,11 +150,16 @@ public class Compara {
 	}
 	
 	//retorna a maxima quantodade de veses que um numero nao saiu
-	public int QuantNumSemSair() {
+	public String QuantNumSemSair() {
 		int naoSaiu = 0, tamanho,contNaoSaiu;
 		boolean saiu;
+		ArrayList<Integer> temporario = new ArrayList<Integer>();
+		String numerosRepetidos = null;
+		
 		
 		for (int numero = 1; numero < 26; numero++){
+			
+			temporario.clear();
 			
 			saiu = false;
 			contNaoSaiu = 0;
@@ -165,24 +172,86 @@ public class Compara {
 				tamanho = numerosConvertidos.size();
 				
 				for(int contResultado = 0; contResultado < tamanho; contResultado++){
-					if(numero == numerosConvertidos.get(contResultado))
+					if(numero == numerosConvertidos.get(contResultado)){
 					    saiu = true;
+					    break;
+					}
 				}
 				
 				if(saiu == true){
-					
-					if(contNaoSaiu > naoSaiu)
-						naoSaiu = contNaoSaiu;
+					temporario.add(contNaoSaiu);
 					contNaoSaiu = 0;
 					saiu = false;
 					
 				}else
 					contNaoSaiu++;
 			}
-			if(contNaoSaiu > naoSaiu)
-				naoSaiu = contNaoSaiu;
+			if(numero == 1)
+				numerosRepetidos = numero + "\n";
+			else
+				numerosRepetidos = numerosRepetidos + numero + "\n";
+			numerosRepetidos = numerosRepetidos + porcentagem.NumerosRepetidos(temporario);
+			
 		}
 		
-		return naoSaiu;
+		return numerosRepetidos;
+	}
+	
+	//conta a quantidade de acertos do concurso anterior
+	public ArrayList<Integer> AcertosJogoAnterior(){
+		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
+		ArrayList<Integer> jogo = new ArrayList<Integer>();
+		
+		int tamanhoResultado,acertos = 0;
+		
+		for(int cont = 0; cont < quantidadeJogos-1; cont++){
+			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
+			jogo = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont+1)));
+			
+			tamanhoResultado = numerosConvertidos.size();
+			for(int cont1 = 0; cont1 < tamanhoResultado; cont1++){
+				for(int cont2 = 0; cont2 < tamanhoResultado; cont2++){
+					if(jogo.get(cont1) == numerosConvertidos.get(cont2)){
+						acertos++;
+					}
+				}
+			}
+			
+			conjuntoACertos.add(acertos);
+			acertos = 0;
+			
+		}
+		
+		return conjuntoACertos;
+	}
+	
+    //conta a quantodade de inpar que acertou no jogo anterior
+	public ArrayList<Integer> ContaInparAcertoAnterior(){
+		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
+		ArrayList<Integer> jogo = new ArrayList<Integer>();
+		ArrayList<Integer> inpar = new ArrayList<Integer>();
+		
+		
+		int tamanhoResultado,acertos = 0;
+		
+		for(int cont = 0; cont < quantidadeJogos-1; cont++){
+			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
+			jogo = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont+1)));
+			
+			tamanhoResultado = numerosConvertidos.size();
+			for(int cont1 = 0; cont1 < tamanhoResultado; cont1++){
+				for(int cont2 = 0; cont2 < tamanhoResultado; cont2++){
+					if(jogo.get(cont1) == numerosConvertidos.get(cont2)){
+						conjuntoACertos.add(jogo.get(cont1));
+					}
+				}
+			}
+			
+			inpar.add(ContaInpar(conjuntoACertos));
+			conjuntoACertos.clear();
+			
+		}
+		
+		return inpar;
 	}
 }
