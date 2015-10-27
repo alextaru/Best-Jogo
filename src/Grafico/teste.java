@@ -48,7 +48,7 @@ public class teste {
 		
 		//System.out.println(porcentagem.NumerosRepetidos(compara.ComparaFrequeciaAcerto(jogo)));
 		
-		System.out.println(porcentagem.NumerosRepetidos(compara.ContaInparAcertoAnterior()));
+		System.out.println(porcentagem.NumerosRepetidos(compara.ContaParAcertoAnterior()));
 	}
 
 }

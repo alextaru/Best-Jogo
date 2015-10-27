@@ -102,7 +102,7 @@ public class Compara {
 	}
 	
 	//conta quantidade de inpar
-	public int ContaInpar(ArrayList<Integer> jogo){
+	public int ContaImpar(ArrayList<Integer> jogo){
 		int tamanho, inpar = 0, numero, resultado;
 		
 		tamanho = jogo.size();
@@ -120,7 +120,7 @@ public class Compara {
 	
 	//compara a quantodade de minima de vezes que saiu 8 pares e 7 inpares
 	public ArrayList<Integer> Conta8par7inpar() {
-		int par, inpar, naoSaiu = 0;
+		int par, impar, naoSaiu = 0;
 		ArrayList<Integer> ficouSemSair = new ArrayList<Integer>();
 		
 		ficouSemSair.clear();
@@ -130,10 +130,10 @@ public class Compara {
 			numerosConvertidos = converte.CoverteParaInteiro(numerosSeparados);	
 			
 			par = ContaPar(numerosConvertidos);
-			inpar = ContaInpar(numerosConvertidos);
+			impar = ContaImpar(numerosConvertidos);
 			
 			if(par == 8){
-				if(inpar == 7){
+				if(impar == 7){
 					if(cont == 0)
 						naoSaiu = 0;
 					else{
@@ -229,10 +229,10 @@ public class Compara {
 	public ArrayList<Integer> ContaInparAcertoAnterior(){
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
 		ArrayList<Integer> jogo = new ArrayList<Integer>();
-		ArrayList<Integer> inpar = new ArrayList<Integer>();
+		ArrayList<Integer> impar = new ArrayList<Integer>();
 		
 		
-		int tamanhoResultado,acertos = 0;
+		int tamanhoResultado;
 		
 		for(int cont = 0; cont < quantidadeJogos-1; cont++){
 			numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
@@ -247,11 +247,41 @@ public class Compara {
 				}
 			}
 			
-			inpar.add(ContaInpar(conjuntoACertos));
+			impar.add(ContaImpar(conjuntoACertos));
 			conjuntoACertos.clear();
 			
 		}
 		
-		return inpar;
+		return impar;
 	}
+	
+	//conta a quantodade de inpar que acertou no jogo anterior
+		public ArrayList<Integer> ContaParAcertoAnterior(){
+			ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
+			ArrayList<Integer> jogo = new ArrayList<Integer>();
+			ArrayList<Integer> par = new ArrayList<Integer>();
+			
+			
+			int tamanhoResultado;
+			
+			for(int cont = 0; cont < quantidadeJogos-1; cont++){
+				numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont)));
+				jogo = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(cont+1)));
+				
+				tamanhoResultado = numerosConvertidos.size();
+				for(int cont1 = 0; cont1 < tamanhoResultado; cont1++){
+					for(int cont2 = 0; cont2 < tamanhoResultado; cont2++){
+						if(jogo.get(cont1) == numerosConvertidos.get(cont2)){
+							conjuntoACertos.add(jogo.get(cont1));
+						}
+					}
+				}
+				
+				par.add(ContaPar(conjuntoACertos));
+				conjuntoACertos.clear();
+				
+			}
+			
+			return par;
+		}
 }
