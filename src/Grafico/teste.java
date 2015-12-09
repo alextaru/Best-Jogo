@@ -1,13 +1,12 @@
 package Grafico;
 
-import imporHtml.HtmlFunc;
-
 import java.util.ArrayList;
 
-import organizador.Organiza;
-import txtFuncion.Txt;
-import calculos.CalculoPorcentagem;
-import calculos.Compara;
+import souces.CalculoPorcentagem;
+import souces.Compara;
+import souces.HtmlFunc;
+import souces.Organiza;
+import souces.Txt;
 
 public class teste {
 
@@ -27,31 +26,31 @@ public class teste {
 		//html.HtmlReadLoto();
 		
 		
-		
-		/*ArrayList<Integer> jogo = new ArrayList<Integer>();
+		ArrayList<Integer> jogo = new ArrayList<Integer>();
 		jogo.clear();
 		
-		jogo.add(2);
-		jogo.add(3);
-		jogo.add(4);
 		jogo.add(6);
+		jogo.add(7);
+		jogo.add(8);
 		jogo.add(9);
 		jogo.add(10);
-		jogo.add(11);
-		jogo.add(13);
-		jogo.add(15);
-		jogo.add(16);
-		jogo.add(18);
-		jogo.add(19);
-		jogo.add(20);
-		jogo.add(23);
-		jogo.add(24);
+		//jogo.add(11);
+		//jogo.add(24);
+		//jogo.add(14);
+		//jogo.add(06);
+		//jogo.add(2);
+		//jogo.add(13);
+		//jogo.add(9);
+		//jogo.add(5);
+		//jogo.add(16);
+		//jogo.add(3);
+		//jogo.add(25);
 		
-		System.out.println(compara.ComparaJogos(jogo));*/
+		System.out.println(compara.QuantNumSemAcertarDois(jogo));
 		
-		//System.out.println(porcentagem.NumerosRepetidos(compara.ContaParAcertoAnterior()));
+		//System.out.println(porcentagem.NumerosRepetidos(compara.ComparaFrequeciaAcerto(jogo)));
 		
-		txt.Igualdade();
+		//txt.Igualdade();
 	}
 
 }

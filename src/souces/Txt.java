@@ -1,4 +1,4 @@
-package txtFuncion;
+package souces;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,8 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import converter.ConverterVariavel;
-import organizador.Organiza;
 
 
 public class Txt {
@@ -76,9 +74,7 @@ public class Txt {
 		ArrayList<Integer> numeros = new ArrayList<Integer>();
 		ArrayList<Integer> numeros2 = new ArrayList<Integer>();
 		String arquivoIgual = null,data2, quinze = null, quatorze = null, treze = null,doze = null,onze = null;
-		int tamanho;
-		
-		
+		int tamanho,acertos = 0;
 		
 		linhas = GravarTxt("arquivos/resutadosLoto.txt");
 		
@@ -100,7 +96,6 @@ public class Txt {
 							
 				numeros2 = organiza.OrdenaArray(numeros2);
 				
-							
 				//compara se o numero resutado � igual
 				if(numeros.get(0) == numeros2.get(0)){
 					if(numeros.get(1) == numeros2.get(1)){
@@ -199,8 +194,6 @@ public class Txt {
 				}
 			}
 		}
-		
-														
 		if(onze == null){
 			onze = "N�o a resultado identico!";
 		}

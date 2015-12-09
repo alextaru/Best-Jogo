@@ -1,12 +1,10 @@
-package imporHtml;
+package souces;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import txtFuncion.Txt;
 
 public class HtmlFunc {
 	private String arquivo, condicao1;// string arquivo � onde � gravado o arquivo organizado

@@ -1,10 +1,6 @@
-package calculos;
+package souces;
 
 import java.util.ArrayList;
-
-import organizador.Organiza;
-import converter.ConverterVariavel;
-import txtFuncion.Txt;
 
 public class CalculoPorcentagem {
 	

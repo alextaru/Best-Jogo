@@ -1,12 +1,8 @@
-package calculos;
+package souces;
 
 import java.util.ArrayList;
 
 import javax.naming.spi.DirStateFactory.Result;
-
-import converter.ConverterVariavel;
-import organizador.Organiza;
-import txtFuncion.Txt;
 
 public class Compara {
 	CalculoPorcentagem porcentagem = new CalculoPorcentagem();
@@ -26,9 +22,11 @@ public class Compara {
 	}
 	
 	//compara se o jogo ja foi sorteado
-	public int ComparaJogos(ArrayList<Integer> jogo){
+	public String ComparaJogos(ArrayList<Integer> jogo){
 		
-		int tamanhoResultado,tamanhoJogo,acertos = 0,resutado = 0;
+		String resultado = null;
+		int tamanhoResultado,tamanhoJogo,acertos = 0;
+		int onze = 0, doze = 0, treze = 0, quatorze = 0, quinze = 0;
 		
 		
 		for(int cont = 0; cont < quantidadeJogos; cont++){
@@ -45,14 +43,65 @@ public class Compara {
 				}
 			}
 			
-			if(resutado < acertos){
-				resutado = acertos;
-				acertos = 0;
-			}else
-				acertos = 0;
+			switch(acertos){
+				case 11:
+					onze++;
+					acertos = 0;
+					break;
+				case 12:
+					doze++;
+					acertos = 0;
+					break;
+				case 13:
+					treze++;
+					acertos = 0;
+					break;
+				case 14:
+					quatorze++;
+					acertos = 0;
+					break;
+				case 15:
+					quinze++;
+					acertos = 0;
+					break;
+				default:
+					acertos = 0;
+					break;
+			}
+				
 		}
 		
-		return resutado;
+		if(onze != 0){
+			resultado = "11 acertos = " + onze +" vezes\n";
+		}
+		if(doze != 0){
+			if(resultado == null)
+				resultado = "12 acertos = " + doze +" vezes\n";
+			else
+				resultado =resultado + "12 acertos = " + doze +" vezes\n";
+		}
+		if(treze != 0){
+			if(resultado == null)
+				resultado = "13 acertos = " + treze +" vezes\n";
+			else
+				resultado =resultado + "13 acertos = " + treze +" vezes\n";
+		}
+		if(quatorze != 0){
+			if(resultado == null)
+				resultado = "14 acertos = " + quatorze +" vezes\n";
+			else
+				resultado =resultado + "14 acertos = " + quatorze +" vezes\n";
+		}
+		if(quinze != 0){
+			if(resultado == null)
+				resultado = "15 acertos = " + quinze +" vezes\n";
+			else
+				resultado =resultado + "15 acertos = " + quinze +" vezes\n";
+		}
+		if(resultado == null)
+			resultado = "bilete nao premiado ainda";
+		
+		return resultado;
 	}
 	
 	//compara a frequecia que em determinados numeros sai na loto
@@ -149,7 +198,7 @@ public class Compara {
 		return ficouSemSair;	
 	}
 	
-	//retorna a maxima quantodade de veses que um numero nao saiu
+	//retorna a maxima quantidade de veses que um numero nao saiu
 	public String QuantNumSemSair() {
 		int naoSaiu = 0, tamanho,contNaoSaiu;
 		boolean saiu;
@@ -225,6 +274,23 @@ public class Compara {
 		return conjuntoACertos;
 	}
 	
+	//conta a quantidade de acertos em um determinado concurso
+	public int AcertosJogoConcurso(ArrayList<Integer> jogo, int concurso){
+		
+		int acertos = 0;
+		
+		numerosConvertidos = converte.CoverteParaInteiro(organiza.SepararNumero(numerosJogo.get(concurso-1)));
+		
+		for(int cont = 0; cont < jogo.size(); cont++){
+			for(int cont1 = 0; cont1 < numerosConvertidos.size(); cont1++){
+				if(jogo.get(cont) == numerosConvertidos.get(cont1)){
+					acertos++;
+				}
+			}
+		}
+		return acertos;
+	}
+	
     //conta a quantodade de inpar que acertou no jogo anterior
 	public ArrayList<Integer> ContaInparAcertoAnterior(){
 		ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
@@ -255,7 +321,7 @@ public class Compara {
 		return impar;
 	}
 	
-	//conta a quantodade de inpar que acertou no jogo anterior
+	//conta a quantodade de par que acertou no jogo anterior
 		public ArrayList<Integer> ContaParAcertoAnterior(){
 			ArrayList<Integer> conjuntoACertos = new ArrayList<Integer>();
 			ArrayList<Integer> jogo = new ArrayList<Integer>();
@@ -284,4 +350,67 @@ public class Compara {
 			
 			return par;
 		}
+		
+		//compara a quantidade maxima que 8 pares ficarao sem sair
+		public String QuantParSemSair() {
+			int quantidadePar,contNaoSaiu = 0;
+			boolean saiu = false;
+			ArrayList<Integer> temporario = new ArrayList<Integer>();
+			String numerosRepetidos;
+			
+			temporario.clear();
+				
+			for (int cont=0; cont < quantidadeJogos; cont++){
+					
+				numerosSeparados = organiza.SepararNumero(numerosJogo.get(cont));
+				numerosConvertidos = converte.CoverteParaInteiro(numerosSeparados);	
+					
+				quantidadePar = ContaPar(numerosConvertidos);
+					
+				if(quantidadePar == 8)
+					saiu = true;
+					
+				if(saiu == true){
+					temporario.add(contNaoSaiu);
+					contNaoSaiu = 0;
+					saiu = false;
+						
+				}else
+					contNaoSaiu++;
+			}
+			
+			numerosRepetidos = porcentagem.NumerosRepetidos(temporario);
+			
+			return numerosRepetidos;
+		}
+		
+		//conta a quantodade de vezes que uns numeros fica sem acertar 2
+		public String QuantNumSemAcertarDois(ArrayList<Integer> conjunto) {
+			int acerto,contNaoSaiu = 0;
+			boolean saiu = false;
+			ArrayList<Integer> temporario = new ArrayList<Integer>();
+			String numerosRepetidos;
+			
+			temporario.clear();
+				
+			for (int cont=1; cont < quantidadeJogos; cont++){
+				
+				acerto = AcertosJogoConcurso(conjunto, cont);
+					
+				if(acerto == 2)
+					saiu = true;
+					
+				if(saiu == true){
+					temporario.add(contNaoSaiu);
+					contNaoSaiu = 0;
+					saiu = false;
+						
+				}else
+					contNaoSaiu++;
+			}
+			
+			numerosRepetidos = porcentagem.NumerosRepetidos(temporario);
+			
+			return numerosRepetidos;
+		}		
 }

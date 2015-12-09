@@ -1,9 +1,7 @@
-package organizador;
+package souces;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
-
-import txtFuncion.Txt;
 
 public class Organiza {
 
