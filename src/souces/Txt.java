@@ -76,7 +76,7 @@ public class Txt {
 		String arquivoIgual = null,data2, quinze = null, quatorze = null, treze = null,doze = null,onze = null;
 		int tamanho,acertos = 0;
 		
-		linhas = GravarTxt("arquivos/resutadosLoto.txt");
+		linhas = GravarTxt("src/txt/resutadosLoto.txt");
 		
 		tamanho = linhas.size();
 			
@@ -210,15 +210,15 @@ public class Txt {
 			quinze = "N�o a resultado identico!";
 		}
 		
-		TxtGerador("arquivos/onze.txt",onze);
+		TxtGerador("src/txt/onze.txt",onze);
 		
-		TxtGerador("arquivos/doze.txt",doze);
+		TxtGerador("src/txt/doze.txt",doze);
 		
-		TxtGerador("arquivos/treze.txt",treze);
+		TxtGerador("src/txt/treze.txt",treze);
 		
-		TxtGerador("arquivos/quatorze.txt",quatorze);
+		TxtGerador("src/txt/quatorze.txt",quatorze);
 		
-		TxtGerador("arquivos/quinze.txt",quinze);
+		TxtGerador("src/txt/quinze.txt",quinze);
 	}
 }
 			

@@ -26,7 +26,7 @@ public class HtmlFunc {
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			formato.setLenient(false);
 			
-			BufferedReader file = new BufferedReader(new FileReader("arquivos//D_MEGA.htm"));
+			BufferedReader file = new BufferedReader(new FileReader("src//htm//D_MEGA.htm"));
 
 			// faz a leitura de todas as linha do arquivo html
 			while (file.ready()) {
@@ -87,7 +87,7 @@ public class HtmlFunc {
 		
 		Txt gerartxt = new Txt();
 		
-		gerartxt.TxtGerador("arquivos/resutadosMega.txt", arquivo);
+		gerartxt.TxtGerador("src/txt/resutadosMega.txt", arquivo);
 
 	}
 	
@@ -100,7 +100,7 @@ public class HtmlFunc {
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 			formato.setLenient(false);
 			
-			BufferedReader file = new BufferedReader(new FileReader("arquivos//D_LOTFAC.htm"));
+			BufferedReader file = new BufferedReader(new FileReader("src//htm//D_LOTFAC.HTM"));
 
 			// faz a leitura de todas as linha do arquivo html
 			while (file.ready()) {
@@ -161,7 +161,7 @@ public class HtmlFunc {
 		
 		Txt gerartxt = new Txt();
 		
-		gerartxt.TxtGerador("arquivos/resutadosLoto.txt", arquivo);
+		gerartxt.TxtGerador("src/txt/resutadosLoto.txt", arquivo);
 
 	}
 
